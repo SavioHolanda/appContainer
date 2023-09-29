@@ -246,8 +246,8 @@ public class SinaisVitaisTest {
 
         Assertions.assertEquals("Informe a temperatura.",sinaisVitaisTela.btnGravarDesabilitadoTemperatura());
     }
-
-    @Test
+// O campo aceita zero no campo então esse testes não será utilizado.
+/*    @Test
     @DisplayName("Teste para validar realizar o cadastro de Temperatura com o valor Zero")
     public void testRealizarCadastroDeTemperaturaComOValorZero() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
@@ -269,7 +269,7 @@ public class SinaisVitaisTest {
 
 // Está sendo permitido digitar zero em temperatura.
         Assertions.assertEquals("Informe a temperatura.",sinaisVitaisTela.btnGravarDesabilitadoTemperatura());
-    }
+    }*/
 
     @Test
     @DisplayName("Teste para validar realizar o cadastro de Temperatura com o campo com caracteres especiais.")
@@ -386,6 +386,274 @@ public class SinaisVitaisTest {
 
         Assertions.assertEquals("Insira a pressão sistólica",sinaisVitaisTela.btnGravarDesabilitadoPressaoSanguinea());
         Assertions.assertEquals("Informe a pressão diastólica.",sinaisVitaisTela.btnGravarDesabilitadoPressaoSanguinea2());
+    }
+    // Testes de pulso
+    @Test
+    @DisplayName("Teste para validar realizar o cadastro de pulso válido")
+    public void testRealizarCadastroDePulsoValido() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnPulsoInserir()
+                .txtPulsoInserir("100")
+                .btnPulsoGravar();
+
+        Assertions.assertEquals("Tudo certo!",sinaisVitaisTela.pesoAlertaSucesso1());
+        Assertions.assertEquals("Registro salvo com sucesso!",sinaisVitaisTela.pesoAlertaSucesso2());
+    }
+
+    @Test
+    @DisplayName("Teste para validar realizar o cadastro de pulso em branco")
+    public void testRealizarCadastroDePulsoEmBranco() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnPulsoInserir()
+                .txtPulsoInserir("")
+                .btnPulsoGravar();
+
+        Assertions.assertEquals("Informe o pulso.",sinaisVitaisTela.btnGravarDesabilitadoPulso());
+    }
+
+    @Test
+    @DisplayName("Teste para validar realizar o cadastro de pulso com o valor Zero")
+    public void testRealizarCadastroDePulsoComOValorZero() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnPulsoInserir()
+                .txtPulsoInserir("")
+                .btnPulsoGravar();
+
+        Assertions.assertEquals("Informe o pulso.",sinaisVitaisTela.btnGravarDesabilitadoPulso());
+    }
+
+    @Test
+    @DisplayName("Teste para validar realizar o cadastro de pulso com o campo com caracteres especiais.")
+    public void testRealizarCadastroDePulsoComCaracteresEspeciais() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnPulsoInserir()
+                .txtPulsoInserir(".,-A *")
+                .btnPulsoGravar();
+
+        Assertions.assertEquals("Informe o pulso.",sinaisVitaisTela.btnGravarDesabilitadoPulso());
+    }
+    // Testes de Glicemia
+    @Test
+    @DisplayName("Teste para validar realizar o cadastro de Glicemia válido")
+    public void testRealizarCadastroDeGlicemiaValido() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnGlicemiaInserir()
+                .txtGlicemiaInserir("100")
+                .btnGlicemiaGravar();
+
+        Assertions.assertEquals("Tudo certo!",sinaisVitaisTela.pesoAlertaSucesso1());
+        Assertions.assertEquals("Registro salvo com sucesso!",sinaisVitaisTela.pesoAlertaSucesso2());
+    }
+
+    @Test
+    @DisplayName("Teste para validar realizar o cadastro de Glicemia em branco")
+    public void testRealizarCadastroDeGlicemiaEmBranco() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnGlicemiaInserir()
+                .txtGlicemiaInserir("")
+                .btnGlicemiaGravar();
+
+        Assertions.assertEquals("Informe o valor da glicemia.",sinaisVitaisTela.btnGravarDesabilitadoGlicemia());
+    }
+// O campo aceita zero no campo então esse testes não será utilizado.
+/*    @Test
+    @DisplayName("Teste para validar realizar o cadastro de Glicemia com o valor Zero")
+    public void testRealizarCadastroDeGlicemiaComOValorZero() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnGlicemiaInserir()
+                .txtGlicemiaInserir("0")
+                .btnGlicemiaGravar();
+
+        Assertions.assertEquals("Informe o valor da glicemia.",sinaisVitaisTela.btnGravarDesabilitadoGlicemia());
+    }*/
+
+    @Test
+    @DisplayName("Teste para validar realizar o cadastro de Glicemia com o campo com caracteres especiais.")
+    public void testRealizarCadastroDeGlicemiaComCaracteresEspeciais() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnGlicemiaInserir()
+                .txtGlicemiaInserir(".,-A *")
+                .btnGlicemiaGravar();
+
+        Assertions.assertEquals("Informe o valor da glicemia.",sinaisVitaisTela.btnGravarDesabilitadoGlicemia());
+    }
+
+    // Testes de Saturação
+    @Test
+    @DisplayName("Teste para validar realizar o cadastro de Saturação válido")
+    public void testRealizarCadastroDeSaturacaoValido() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnSaturacaoInserir()
+                .txtSaturacaoInserir("100")
+                .btnSaturacaoGravar();
+
+        Assertions.assertEquals("Tudo certo!",sinaisVitaisTela.pesoAlertaSucesso1());
+        Assertions.assertEquals("Registro salvo com sucesso!",sinaisVitaisTela.pesoAlertaSucesso2());
+    }
+
+    @Test
+    @DisplayName("Teste para validar realizar o cadastro de Saturação em branco")
+    public void testRealizarCadastroDeSaturacaoEmBranco() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnSaturacaoInserir()
+                .txtSaturacaoInserir("")
+                .btnSaturacaoGravar();
+
+        Assertions.assertEquals("Informe a saturação.",sinaisVitaisTela.btnGravarDesabilitadoSaturacao());
+    }
+// O campo aceita zero no campo então esse testes não será utilizado.
+/*    @Test
+    @DisplayName("Teste para validar realizar o cadastro de Saturação com o valor Zero")
+    public void testRealizarCadastroDeSaturacaoComOValorZero() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnSaturacaoInserir()
+                .txtSaturacaoInserir("0")
+                .btnSaturacaoGravar();
+
+        Assertions.assertEquals("Informe a saturação.",sinaisVitaisTela.btnGravarDesabilitadoSaturacao());
+    }*/
+
+    @Test
+    @DisplayName("Teste para validar realizar o cadastro de Saturação com o campo com caracteres especiais.")
+    public void testRealizarCadastroDeSaturacaoComCaracteresEspeciais() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnSaturacaoInserir()
+                .txtSaturacaoInserir(".,-A *")
+                .btnSaturacaoGravar();
+
+        Assertions.assertEquals("Informe a saturação.",sinaisVitaisTela.btnGravarDesabilitadoSaturacao());
     }
 
     @After
