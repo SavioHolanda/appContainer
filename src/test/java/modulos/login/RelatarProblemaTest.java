@@ -21,8 +21,8 @@ public class RelatarProblemaTest {
         this.app.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
     @Test
-    @DisplayName("Teste para realizar validação de envio de uma mensagem corretamente")
-    public void testParaRealizarValidacaoDeEnvioDeUmaMensagemCorretamente() {
+    @DisplayName("Relatar um problema técnico corretamente preenchendo os campos Nome, Telefone, Mensagem e Enviando.")
+    public void testRelatarUmProblemaTecnicoCorretamentePreenchendoOsCampoNomeTelefoneMensagemEEnviando() {
         LoginTela loginTela = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -40,8 +40,8 @@ public class RelatarProblemaTest {
         Assertions.assertEquals("Recebemos sua notificação e entraremos em contato em breve. Nosso horário de atendimento é de segunda a sexta, das 9h às 19h.", mensagemSucessoRelatarproblema2);
     }
     @Test
-    @DisplayName("Teste para realizar validação dos campos obrigatórios")
-    public void testParaRealizarValidacaoDosCamposObrigatorios() {
+    @DisplayName("Relatar um problema técnico invalido não preenchendo os campos Nome, Telefone, Mensagem e Enviando.")
+    public void testRelatarUmProblemaTecnicoInvalidoNaoPreenchendoOsCamposNomeTelefoneMensagemEEnviando() {
         LoginTela loginTela = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -58,8 +58,8 @@ public class RelatarProblemaTest {
         Assertions.assertEquals("Informe o problema", mensagemObrigatorio);
     }
     @Test
-    @DisplayName("Teste para verificar digitar caracteres especiais ou letras no campo Telefone.")
-    public void testParaVerificarUsarCaracteresEspeciaisOuLetrasNoCampoTelefone() {
+    @DisplayName("Digitar caracteres especiais ou letras no campo Telefone.")
+    public void testDigitarCaracteresEspeciaisOuLetrasNoCampoTelefone() {
         LoginTela loginTela = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -73,8 +73,8 @@ public class RelatarProblemaTest {
         Assertions.assertEquals("Telefone Celular", mensagemTelefoneObrigatorio);
     }
     @Test
-    @DisplayName("Teste para realizar o cancelamento do envio de mensagem")
-    public void testParaRealizarOCancelamentoDoEnvioDeMensagem() {
+    @DisplayName("Clicar na funcionalidade botão cancelar.")
+    public void testClicarNaFuncionalidadeBotaoCancelar() {
         String textoRelatarproblema = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()

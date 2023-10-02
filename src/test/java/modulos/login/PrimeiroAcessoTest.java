@@ -35,8 +35,8 @@ public class PrimeiroAcessoTest {
         // Assertions.assertEquals("Falha no login. Tente novamente mais tarde.", mensagemApresentada);
     }*/
     @Test
-    @DisplayName("Teste para verificar primeiro acesso ao deixar o cpf em branco")
-    public void testParaVerificarPrimeiroAcessoAoDeixaOCampoCpfEmBranco() {
+    @DisplayName("Realizar primeiro acesso com campo Digite seu CPF em branco.")
+    public void testRealizarPrimeiroAcessoComCampoDigiteSeuCPFEmBranco() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -48,8 +48,8 @@ public class PrimeiroAcessoTest {
         Assertions.assertEquals("CPF obrigatório", mensagemApresentada);
     }
     @Test
-    @DisplayName("Teste para verificar primeiro acesso ao preencher o cpf valido porém já cadastrado")
-    public void testParaVerfificarPrimeiroAcessoAoPreencherOCpfValidoPoremJaCadastrado() {
+    @DisplayName("Realizar primeiro acesso digitando um CPF valido não sendo o primeiro acesso no campo Digite seu CPF.")
+    public void testRealizarPrimeiroAcessoDigitandoUmCPFValidoNaoSendoOPrimeiroAcessoNoCampoDigiteSeCPF() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -62,8 +62,8 @@ public class PrimeiroAcessoTest {
         Assertions.assertEquals("Nenhuma empresa encontrada", mensagemApresentada);
     }
     @Test
-    @DisplayName("Teste para verificar primeiro acesso ao preencher o cpf invalido")
-    public void testParaVerificarPrimeiroAcessoAoPreencherOCpfInvalido() {
+    @DisplayName("Realizar primeiro acesso digitando um CPF valido não cadastrado no campo Digite seu CPF.")
+    public void testRealizarPrimeiroAcessoDigitandoUmCPFValidoNaoCadastradoNoCampoDigiteSeuCPF() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -76,8 +76,8 @@ public class PrimeiroAcessoTest {
         Assertions.assertEquals("Nenhuma empresa encontrada", mensagemApresentada);
     }
     @Test
-    @DisplayName("Teste para verificar primeiro acesso ao preencher o cpf incompleto")
-    public void testParaVerificarPrimeiroAcessoAoPreencherOCpfIncompleto() {
+    @DisplayName("Realizar primeiro acesso digitando um CPF incompleto no campo Digite seu CPF.")
+    public void testRealizarPrimeiroAcessoDigitandoUmCPFIncompletoNoCampoDigiteSeuCPF() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -90,8 +90,8 @@ public class PrimeiroAcessoTest {
         Assertions.assertEquals("Digite o CPF completo", mensagemApresentada);
     }
     @Test
-    @DisplayName("Teste para verificar primeiro acesso ao preencher o cpf com caracteres especiais.")
-    public void testParaVerificarPrimeiroAcessoAoPreencherOCpfComCaracteresEspeciais() {
+    @DisplayName("Realizar primeiro acesso digitando letras ou caracteres especiais no campo Digite seu CPF.")
+    public void testRealizarPrimeiroAcessoDigitandoLetrasOuCaracteresEspeciaisNoCampoDigiteSeuCPF() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()

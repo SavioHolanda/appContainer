@@ -22,8 +22,8 @@ public class EsqueciSenhaTest {
     }
 
     @Test
-    @DisplayName("Teste para validar digitar um CPF valido cadastrado no campo Digite seu CPF e envia-lo.")
-    public void testParaAlterarSenhaEsquecidaComCPFValido() {
+    @DisplayName("Digitar um CPF cadastrado no campo Digite seu CPF e envia-lo.")
+    public void testDgitarUmCPFCadastradoNoCampoDigiteSeuCPFEEnvialo() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -43,8 +43,8 @@ public class EsqueciSenhaTest {
     }
 
     @Test
-    @DisplayName("Teste para validar digitar um CPF não cadastrado no campo Digite seu CPF e envia-lo.")
-    public void testParaAlterarSenhaEsquecidaComCPFInvalido() {
+    @DisplayName("Digitar um CPF não cadastrado no campo Digite seu CPF e envia-lo.")
+    public void testDigitarUmCPFNaoCadastradoNoCampoDigiteSeuCPFEEnvialo() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -58,8 +58,8 @@ public class EsqueciSenhaTest {
     }
 
     @Test
-    @DisplayName("Teste para alterar senha esquecida com CPF preenchido com letras e caracteres especiais")
-    public void testParaAlterarSenhaEsquecidaComCPFPreenchidoComLetrasECaracteresEspeciais() {
+    @DisplayName("Digitar letras e caracteres especiais no campo digite seu CPF.")
+    public void testDigitarLetrasECaracteresEspeciaisNoCampoDigiteSeuCPF() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -73,8 +73,8 @@ public class EsqueciSenhaTest {
     }
 
     @Test
-    @DisplayName("Teste para alterar senha esquecida com CPF com o campo vazio")
-    public void testParaAlterarSenhaEsquecidaComCPFComOCampoVazio() {
+    @DisplayName("Deixar o campo Digite seu CPF em branco.")
+    public void testDeixaOCampoDigiteSeuCPFEmBranco() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -88,8 +88,8 @@ public class EsqueciSenhaTest {
     }
 
     @Test
-    @DisplayName("Teste para validar digitar um CPF incompleto no campo Digite seu CPF.")
-    public void testParaValidarCpfIncompleto() {
+    @DisplayName("Digitar um CPF incompleto no campo Digite seu CPF.")
+    public void testDigitarUmCPFIncompletoNoCampoDigiteSeuCPF() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()

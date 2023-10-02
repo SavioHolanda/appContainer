@@ -21,8 +21,8 @@ public class LoginTest {
     }
 
     @Test
-    @DisplayName("Teste para Realizar login com sucesso com o usuário cadastrado em mais de uma entidade")
-    public void testRealizarLoginComSucessoMaisDeUmaEntidade() {
+    @DisplayName("Realizar login com sucesso com um usuário cadastrado em mais de uma entidade")
+    public void testRealizarLoginComSucessoComUmUsuarioCadastroEmMaisDeUmaEntidade() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -39,8 +39,8 @@ public class LoginTest {
     }
 
     @Test
-    @DisplayName("Teste para Realizar login com sucesso com o usuário cadastrado em apenas de uma entidade")
-    public void testRealizarLoginComSucessoUmaEntidade() {
+    @DisplayName("Realizar login com sucesso com um usuário cadastrado em apenas uma entidade.")
+    public void testRealizarLoginComSucessoComUmUsuarioCadastradoEmApenasUmaEntidade() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -54,8 +54,8 @@ public class LoginTest {
     }
 
     @Test
-    @DisplayName("Teste para Realizar login com CPF sem cadastro")
-    public void testRealizarLoginSemCadastro() {
+    @DisplayName("Realizar login com CPF não cadastrado.")
+    public void testRealizarLoginComCPFNaoCadastrado() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -69,8 +69,8 @@ public class LoginTest {
     }
 
     @Test
-    @DisplayName("Teste para Realizar login invalido com os campos vazios")
-    public void testRealizarLoginInvalidoComOsCamposVazios() {
+    @DisplayName("Realizar login com campos CPF e Senha em branco.")
+    public void testRealizarLoginComCamposCPFESenhaEmBranco() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -82,8 +82,8 @@ public class LoginTest {
     }
 
     @Test
-    @DisplayName("Teste para validar o bloqueio de digitar letras ou caracteres especiais no campo CPF ")
-    public void testRealizarBloqueioCaracteresEspeciaisNoCampoCPF() {
+    @DisplayName("Digitar letras ou caracteres especiais no campo CPF.")
+    public void testDgitarLetrasOuCaracteresEspeciaisNoCampoCPF() {
         String mensagemApresentada = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()

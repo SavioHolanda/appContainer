@@ -23,8 +23,8 @@ public class AtestadoTest {
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de um atestado")
-    public void testRealizarCadastroDeAtestado() {
+    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período.")
+    public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodo() {
         AtestadoTela atestadoTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
