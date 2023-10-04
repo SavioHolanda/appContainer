@@ -176,7 +176,7 @@ public class AtestadoTest {
                 .btnSalvar2();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe a data de início do atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemDataInicio(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem data inicio.")
@@ -199,7 +199,7 @@ public class AtestadoTest {
                 .btnSalvar3();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe a data de início do atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemDataInicio(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem hora inicio.")
@@ -223,7 +223,7 @@ public class AtestadoTest {
                 .btnSalvar();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe o horário de início do atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemHoraInicio(),atestadoTela.alerta());
     }
 
     @Test
@@ -249,7 +249,7 @@ public class AtestadoTest {
                 .btnSalvar2();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe o horário de início do atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemHoraInicio(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem hora inicio.")
@@ -274,7 +274,7 @@ public class AtestadoTest {
                 .btnSalvar3();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe o horário de início do atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemHoraInicio(),atestadoTela.alerta());
     }
 
     @Test
@@ -301,7 +301,7 @@ public class AtestadoTest {
                 .btnSalvar();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe a data de fim do atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemDataFim(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem  a qtd de horas.")
@@ -416,7 +416,7 @@ public class AtestadoTest {
                 .btnSalvar();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe os dados do médico responsável pelo atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemMedicoResponsavel(),atestadoTela.alerta());
      }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem o nome do medico.")
@@ -444,7 +444,7 @@ public class AtestadoTest {
                 .btnSalvar2();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe os dados do médico responsável pelo atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemMedicoResponsavel(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem o nome do medico.")
@@ -472,7 +472,7 @@ public class AtestadoTest {
                 .btnSalvar3();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe os dados do médico responsável pelo atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemMedicoResponsavel(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem o CRM/CRO do medico.")
@@ -504,7 +504,7 @@ public class AtestadoTest {
                 .btnSalvar();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe o CRM/CRO do médico responsável pelo atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemCrmMedico(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem o CRM/CRO do medico.")
@@ -533,7 +533,7 @@ public class AtestadoTest {
                 .btnSalvar2();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe o CRM/CRO do médico responsável pelo atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemCrmMedico(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem o CRM/CRO do medico.")
@@ -562,7 +562,7 @@ public class AtestadoTest {
                 .btnSalvar3();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe o CRM/CRO do médico responsável pelo atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemCrmMedico(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem anexo do atestado.")
@@ -597,7 +597,7 @@ public class AtestadoTest {
                 .btnSalvar();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("É necessário anexar um atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemAnexoAtestado(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem anexo do atestado.")
@@ -629,7 +629,7 @@ public class AtestadoTest {
                 .btnSalvar2();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("É necessário anexar um atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemAnexoAtestado(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem anexo do atestado.")
@@ -661,7 +661,7 @@ public class AtestadoTest {
                 .btnSalvar3();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("É necessário anexar um atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemAnexoAtestado(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem marcar o campo de confirmação de dados.")
@@ -697,7 +697,7 @@ public class AtestadoTest {
                 .btnSalvar();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Confirme a validade dos dados informados.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemValidadeDados(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem marcar o campo de confirmação de dados.")
@@ -730,7 +730,7 @@ public class AtestadoTest {
                 .btnSalvar2();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Confirme a validade dos dados informados.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemValidadeDados(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem marcar o campo de confirmação de dados.")
@@ -763,7 +763,7 @@ public class AtestadoTest {
                 .btnSalvar3();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Confirme a validade dos dados informados.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemValidadeDados(),atestadoTela.alerta());
     }
     @After
     public void fecharDriver(){

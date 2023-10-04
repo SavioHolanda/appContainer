@@ -207,14 +207,36 @@ public class AtestadoTela {
         return app.findElement(By.id("android:id/message")).getText();
     }
 
-    // Mensagem de retorno que são padrões!
+
+    /**** Mensagem de retorno que são padrões! ****/
     public String mensagemAtencao() {
         return "Atenção!";
     }
     public String mensagemTudoCerto(){
         return "Tudo certo!";
     }
+    public String mensagemTudoCerto2(){
+        return "";
+    }
     public String mensagemDataInicio(){
         return "Informe a data de início do atestado.";
+    }
+    public String mensagemHoraInicio(){
+        return "Informe o horário de início do atestado.";
+    }
+    public String mensagemDataFim(){
+        return "Informe a data de fim do atestado.";
+    }
+    public String mensagemMedicoResponsavel(){
+        return "Informe os dados do médico responsável pelo atestado.";
+    }
+    public String mensagemCrmMedico(){
+        return "Informe o CRM/CRO do médico responsável pelo atestado.";
+    }
+    public String mensagemAnexoAtestado(){
+        return "É necessário anexar um atestado.";
+    }
+    public String mensagemValidadeDados(){
+        return "Confirme a validade dos dados informados.";
     }
 }
