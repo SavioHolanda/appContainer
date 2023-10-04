@@ -56,7 +56,7 @@ public class AtestadoTest {
                 .checkBoxConfirmacao()
                 .btnSalvar();
 
-        Assertions.assertEquals("Tudo certo!",atestadoTela.mensagemCadastroPositivo());
+        Assertions.assertEquals(atestadoTela.mensagemTudoCerto(),atestadoTela.mensagemCadastroPositivo());
         Assertions.assertEquals("Recebemos o seu atestado e está em análise. Em até 2 dias úteis você receberá a confirmação de aceite, fique atento.\n" +
                 " IMPORTANTE: Não descarte seu atestado original, ele é um documento legal, e pode ser necessário apresentá-lo pessoalmente.",atestadoTela.mensagemCadastroPositivoComplemento());
     }
@@ -92,7 +92,7 @@ public class AtestadoTest {
                 .checkBoxConfirmacao2()
                 .btnSalvar2();
 
-        Assertions.assertEquals("Tudo certo!",atestadoTela.mensagemCadastroPositivo());
+        Assertions.assertEquals(atestadoTela.mensagemTudoCerto(),atestadoTela.mensagemCadastroPositivo());
         Assertions.assertEquals("Recebemos o seu atestado e está em análise. Em até 2 dias úteis você receberá a confirmação de aceite, fique atento.\n" +
                 " IMPORTANTE: Não descarte seu atestado original, ele é um documento legal, e pode ser necessário apresentá-lo pessoalmente.",atestadoTela.mensagemCadastroPositivoComplemento());
     }
@@ -128,7 +128,7 @@ public class AtestadoTest {
                 .checkBoxConfirmacao3()
                 .btnSalvar3();
 
-        Assertions.assertEquals("Tudo certo!",atestadoTela.mensagemCadastroPositivo());
+        Assertions.assertEquals(atestadoTela.mensagemTudoCerto(),atestadoTela.mensagemCadastroPositivo());
         Assertions.assertEquals("Recebemos o seu atestado e está em análise. Em até 2 dias úteis você receberá a confirmação de aceite, fique atento.\n" +
                 " IMPORTANTE: Não descarte seu atestado original, ele é um documento legal, e pode ser necessário apresentá-lo pessoalmente.",atestadoTela.mensagemCadastroPositivoComplemento());
     }
@@ -152,8 +152,8 @@ public class AtestadoTest {
                 .btnCadastrarAtestado()
                 .btnSalvar();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe a data de início do atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemDataInicio(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Quantidade sem data inicio.")
@@ -175,7 +175,7 @@ public class AtestadoTest {
                 .tipoHoraQtd()
                 .btnSalvar2();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals("Informe a data de início do atestado.",atestadoTela.alerta());
     }
     @Test
@@ -198,7 +198,7 @@ public class AtestadoTest {
                 .tipoAtestadoDia()
                 .btnSalvar3();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals("Informe a data de início do atestado.",atestadoTela.alerta());
     }
     @Test
@@ -222,7 +222,7 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals("Informe o horário de início do atestado.",atestadoTela.alerta());
     }
 
@@ -244,9 +244,11 @@ public class AtestadoTest {
                 .btnPermissao()
                 .btnCadastrarAtestado()
                 .tipoHoraQtd()
+                .selecionarDataInicio()
+                .btnConfirmarDataEHora()
                 .btnSalvar2();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals("Informe o horário de início do atestado.",atestadoTela.alerta());
     }
     @Test
@@ -271,7 +273,7 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar3();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals("Informe o horário de início do atestado.",atestadoTela.alerta());
     }
 
@@ -296,17 +298,15 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .selecionarHoraInicio()
                 .btnConfirmarDataEHora()
-                .selecionarDataFim()
-                .scroll(0.5,0.56,0.5,0.52)
-                .btnConfirmarDataEHora()
                 .btnSalvar();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals("Informe a data de fim do atestado.",atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem  a qtd de horas.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorHoraEQuantidadeSemAQtdDeHoras() {
+        //Ao deixar o valor da quantidade de dias de horas em branco, o campo não fica como obrigatório.
         AtestadoTela atestadoTela = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -328,7 +328,7 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar2();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals("Informe a quantidade de horas.",atestadoTela.alerta());
     }
     @Test
@@ -357,7 +357,7 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals("Informe o horário de término do atestado.",atestadoTela.alerta());
     }
     @Test
@@ -384,7 +384,7 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar3();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals("Informe o número de dias do atestado.",atestadoTela.alerta());
     }
     @Test
@@ -415,7 +415,7 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals("Informe os dados do médico responsável pelo atestado.",atestadoTela.alerta());
      }
     @Test
@@ -443,7 +443,7 @@ public class AtestadoTest {
                 .btnqtdHoras()
                 .btnSalvar2();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals("Informe os dados do médico responsável pelo atestado.",atestadoTela.alerta());
     }
     @Test
@@ -471,8 +471,299 @@ public class AtestadoTest {
                 .btnDias()
                 .btnSalvar3();
 
-        Assertions.assertEquals("Atenção!",atestadoTela.alertaAtencao());
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals("Informe os dados do médico responsável pelo atestado.",atestadoTela.alerta());
+    }
+    @Test
+    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem o CRM/CRO do medico.")
+    public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodoSemOCrmCroDoMedico() {
+        AtestadoTela atestadoTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnAtestado()
+                .btnPermissao()
+                .btnCadastrarAtestado()
+                .selecionarDataInicio()
+                .btnConfirmarDataEHora()
+                .selecionarHoraInicio()
+                .btnConfirmarDataEHora()
+                .selecionarDataFim()
+                .scroll(0.5,0.56,0.5,0.52)
+                .btnConfirmarDataEHora()
+                .selecionarHoraFim()
+                .btnConfirmarDataEHora()
+                .txtNomeMedico("Dr João Silva")
+                .btnSalvar();
+
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
+        Assertions.assertEquals("Informe o CRM/CRO do médico responsável pelo atestado.",atestadoTela.alerta());
+    }
+    @Test
+    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem o CRM/CRO do medico.")
+    public void testRealizarOCadastroDeUmAtestadoDoTipoPorHoraEQuantidadeSemOCrmCroDoMedico() {
+        AtestadoTela atestadoTela = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5, 0.90, 0.5, 0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnAtestado()
+                .btnPermissao()
+                .btnCadastrarAtestado()
+                .tipoHoraQtd()
+                .selecionarDataInicio()
+                .btnConfirmarDataEHora()
+                .selecionarHoraInicio()
+                .btnConfirmarDataEHora()
+                .btnqtdHoras()
+                .txtNomeMedico2("Dr João Silva")
+                .btnSalvar2();
+
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
+        Assertions.assertEquals("Informe o CRM/CRO do médico responsável pelo atestado.",atestadoTela.alerta());
+    }
+    @Test
+    @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem o CRM/CRO do medico.")
+    public void testRealizarOCadastroDeUmAtestadoDoTipoPorDiaSemOCrmCroDoMedico() {
+        AtestadoTela atestadoTela = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5, 0.90, 0.5, 0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnAtestado()
+                .btnPermissao()
+                .btnCadastrarAtestado()
+                .tipoAtestadoDia()
+                .selecionarDataInicio2()
+                .btnConfirmarDataEHora()
+                .selecionarHoraInicio2()
+                .btnConfirmarDataEHora()
+                .btnDias()
+                .txtNomeMedico3("Dr João Silva")
+                .btnSalvar3();
+
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
+        Assertions.assertEquals("Informe o CRM/CRO do médico responsável pelo atestado.",atestadoTela.alerta());
+    }
+    @Test
+    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem anexo do atestado.")
+    public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodoSemAnexoDoAtestado() {
+        AtestadoTela atestadoTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnAtestado()
+                .btnPermissao()
+                .btnCadastrarAtestado()
+                .selecionarDataInicio()
+                .btnConfirmarDataEHora()
+                .selecionarHoraInicio()
+                .btnConfirmarDataEHora()
+                .selecionarDataFim()
+                .scroll(0.5,0.56,0.5,0.52)
+                .btnConfirmarDataEHora()
+                .selecionarHoraFim()
+                .btnConfirmarDataEHora()
+                .txtNomeMedico("Dr João Silva")
+                .txtCRM("123456")
+                .txtCID("654321")
+                .txtObs("Obs")
+                .btnSalvar();
+
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
+        Assertions.assertEquals("É necessário anexar um atestado.",atestadoTela.alerta());
+    }
+    @Test
+    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem anexo do atestado.")
+    public void testRealizarOCadastroDeUmAtestadoDoTipoPorHoraEQuantidadeSemAnexoDoAtestado() {
+        AtestadoTela atestadoTela = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5, 0.90, 0.5, 0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnAtestado()
+                .btnPermissao()
+                .btnCadastrarAtestado()
+                .tipoHoraQtd()
+                .selecionarDataInicio()
+                .btnConfirmarDataEHora()
+                .selecionarHoraInicio()
+                .btnConfirmarDataEHora()
+                .btnqtdHoras()
+                .txtNomeMedico2("Dr João Silva")
+                .txtCRM2("123456")
+                .txtCID2("654321")
+                .txtObs2("Obs")
+                .btnSalvar2();
+
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
+        Assertions.assertEquals("É necessário anexar um atestado.",atestadoTela.alerta());
+    }
+    @Test
+    @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem anexo do atestado.")
+    public void testRealizarOCadastroDeUmAtestadoDoTipoPorDiaSemAnexoDoAtestado() {
+        AtestadoTela atestadoTela = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5, 0.90, 0.5, 0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnAtestado()
+                .btnPermissao()
+                .btnCadastrarAtestado()
+                .tipoAtestadoDia()
+                .selecionarDataInicio2()
+                .btnConfirmarDataEHora()
+                .selecionarHoraInicio2()
+                .btnConfirmarDataEHora()
+                .btnDias()
+                .txtNomeMedico3("Dr João Silva")
+                .txtCRM3("123456")
+                .txtCID3("654321")
+                .txtObs3("Obs")
+                .btnSalvar3();
+
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
+        Assertions.assertEquals("É necessário anexar um atestado.",atestadoTela.alerta());
+    }
+    @Test
+    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem marcar o campo de confirmação de dados.")
+    public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodoSemMarcarOCampoDeConfirmacaoDeDados() {
+        AtestadoTela atestadoTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnAtestado()
+                .btnPermissao()
+                .btnCadastrarAtestado()
+                .selecionarDataInicio()
+                .btnConfirmarDataEHora()
+                .selecionarHoraInicio()
+                .btnConfirmarDataEHora()
+                .selecionarDataFim()
+                .scroll(0.5,0.56,0.5,0.52)
+                .btnConfirmarDataEHora()
+                .selecionarHoraFim()
+                .btnConfirmarDataEHora()
+                .txtNomeMedico("Dr João Silva")
+                .txtCRM("123456")
+                .txtCID("654321")
+                .txtObs("Obs")
+                .btnAnexarAtestadoGaleria()
+                .btnSalvar();
+
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
+        Assertions.assertEquals("Confirme a validade dos dados informados.",atestadoTela.alerta());
+    }
+    @Test
+    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem marcar o campo de confirmação de dados.")
+    public void testRealizarOCadastroDeUmAtestadoDoTipoPorHoraEQuantidadeSemMarcarOCampoDeConfirmacaoDedados() {
+        AtestadoTela atestadoTela = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5, 0.90, 0.5, 0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnAtestado()
+                .btnPermissao()
+                .btnCadastrarAtestado()
+                .tipoHoraQtd()
+                .selecionarDataInicio()
+                .btnConfirmarDataEHora()
+                .selecionarHoraInicio()
+                .btnConfirmarDataEHora()
+                .btnqtdHoras()
+                .txtNomeMedico2("Dr João Silva")
+                .txtCRM2("123456")
+                .txtCID2("654321")
+                .txtObs2("Obs")
+                .btnAnexarAtestadoGaleria2()
+                .btnSalvar2();
+
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
+        Assertions.assertEquals("Confirme a validade dos dados informados.",atestadoTela.alerta());
+    }
+    @Test
+    @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem marcar o campo de confirmação de dados.")
+    public void testRealizarOCadastroDeUmAtestadoDoTipoPorDiaSemMarcarOCampoDeConfirmacaoDeDados() {
+        AtestadoTela atestadoTela = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5, 0.90, 0.5, 0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnAtestado()
+                .btnPermissao()
+                .btnCadastrarAtestado()
+                .tipoAtestadoDia()
+                .selecionarDataInicio2()
+                .btnConfirmarDataEHora()
+                .selecionarHoraInicio2()
+                .btnConfirmarDataEHora()
+                .btnDias()
+                .txtNomeMedico3("Dr João Silva")
+                .txtCRM3("123456")
+                .txtCID3("654321")
+                .txtObs3("Obs")
+                .btnAnexarAtestadoGaleria3()
+                .btnSalvar3();
+
+        Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
+        Assertions.assertEquals("Confirme a validade dos dados informados.",atestadoTela.alerta());
     }
     @After
     public void fecharDriver(){

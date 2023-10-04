@@ -89,7 +89,6 @@ public class AtestadoTela {
         app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]")).click();
         return this;
     }
-
     public AtestadoTela selecionarDataFim(){
         app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[8]")).click();
         return this;
@@ -191,8 +190,6 @@ public class AtestadoTela {
         app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[13]")).click();
         return this;
     }
-
-    //Localizadores utilizados em mais de um processo
     public AtestadoTela btnConfirmarDataEHora(){
         app.findElement(By.id("android:id/button1")).click();
         return this;
@@ -208,5 +205,16 @@ public class AtestadoTela {
     }
     public String alerta(){
         return app.findElement(By.id("android:id/message")).getText();
+    }
+
+    // Mensagem de retorno que são padrões!
+    public String mensagemAtencao() {
+        return "Atenção!";
+    }
+    public String mensagemTudoCerto(){
+        return "Tudo certo!";
+    }
+    public String mensagemDataInicio(){
+        return "Informe a data de início do atestado.";
     }
 }
