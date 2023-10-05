@@ -216,7 +216,8 @@ public class AtestadoTela {
         return "Tudo certo!";
     }
     public String mensagemTudoCerto2(){
-        return "";
+        return "Recebemos o seu atestado e está em análise. Em até 2 dias úteis você receberá a confirmação de aceite, fique atento. \n" +
+                                " IMPORTANTE: Não descarte seu atestado original, ele é um documento legal, e pode ser necessário apresentá-lo pessoalmente.";
     }
     public String mensagemDataInicio(){
         return "Informe a data de início do atestado.";
@@ -238,5 +239,14 @@ public class AtestadoTela {
     }
     public String mensagemValidadeDados(){
         return "Confirme a validade dos dados informados.";
+    }
+    public String mensagemQtdHoras(){
+        return "Informe a quantidade de horas.";
+    }
+    public String mensagemHoratermino(){
+        return "Informe o horário de término do atestado.";
+    }
+    public String mensagemNumeroDias(){
+        return "Informe o número de dias do atestado.";
     }
 }

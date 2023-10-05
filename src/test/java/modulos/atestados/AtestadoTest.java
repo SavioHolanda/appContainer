@@ -57,8 +57,7 @@ public class AtestadoTest {
                 .btnSalvar();
 
         Assertions.assertEquals(atestadoTela.mensagemTudoCerto(),atestadoTela.mensagemCadastroPositivo());
-        Assertions.assertEquals("Recebemos o seu atestado e está em análise. Em até 2 dias úteis você receberá a confirmação de aceite, fique atento.\n" +
-                " IMPORTANTE: Não descarte seu atestado original, ele é um documento legal, e pode ser necessário apresentá-lo pessoalmente.",atestadoTela.mensagemCadastroPositivoComplemento());
+        Assertions.assertEquals(atestadoTela.mensagemTudoCerto2(),atestadoTela.mensagemCadastroPositivoComplemento());
     }
 
     @Test
@@ -93,8 +92,7 @@ public class AtestadoTest {
                 .btnSalvar2();
 
         Assertions.assertEquals(atestadoTela.mensagemTudoCerto(),atestadoTela.mensagemCadastroPositivo());
-        Assertions.assertEquals("Recebemos o seu atestado e está em análise. Em até 2 dias úteis você receberá a confirmação de aceite, fique atento.\n" +
-                " IMPORTANTE: Não descarte seu atestado original, ele é um documento legal, e pode ser necessário apresentá-lo pessoalmente.",atestadoTela.mensagemCadastroPositivoComplemento());
+        Assertions.assertEquals(atestadoTela.mensagemTudoCerto2(),atestadoTela.mensagemCadastroPositivoComplemento());
     }
 
     @Test
@@ -129,8 +127,7 @@ public class AtestadoTest {
                 .btnSalvar3();
 
         Assertions.assertEquals(atestadoTela.mensagemTudoCerto(),atestadoTela.mensagemCadastroPositivo());
-        Assertions.assertEquals("Recebemos o seu atestado e está em análise. Em até 2 dias úteis você receberá a confirmação de aceite, fique atento.\n" +
-                " IMPORTANTE: Não descarte seu atestado original, ele é um documento legal, e pode ser necessário apresentá-lo pessoalmente.",atestadoTela.mensagemCadastroPositivoComplemento());
+        Assertions.assertEquals(atestadoTela.mensagemTudoCerto2(),atestadoTela.mensagemCadastroPositivoComplemento());
     }
 
     @Test
@@ -329,7 +326,7 @@ public class AtestadoTest {
                 .btnSalvar2();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe a quantidade de horas.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemQtdHoras(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem hora fim.")
@@ -358,7 +355,7 @@ public class AtestadoTest {
                 .btnSalvar();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe o horário de término do atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemHoratermino(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem a quantidade de dias.")
@@ -385,7 +382,7 @@ public class AtestadoTest {
                 .btnSalvar3();
 
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
-        Assertions.assertEquals("Informe o número de dias do atestado.",atestadoTela.alerta());
+        Assertions.assertEquals(atestadoTela.mensagemNumeroDias(),atestadoTela.alerta());
     }
     @Test
     @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem o nome do medico.")
