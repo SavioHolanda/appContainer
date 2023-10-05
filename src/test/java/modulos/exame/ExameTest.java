@@ -24,8 +24,8 @@ public class ExameTest {
     }
 
     @Test
-    @DisplayName("Cadastrar um exame corretamente por Galeria")
-    public void testCadastrarUmExameCorretamentePorGaleria(){
+    @DisplayName("Realizar o cadastro de um exame selecionando uma categoria e anexando uma imagem da galeria de imagens e salvar.")
+    public void testRealizarOCadastroDeUmExameSelecionandoUmaCategoriaEAnexoUmaImagemDaGaleriaDeImagensESalvar(){
         ExameTela exameTela = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -48,12 +48,12 @@ public class ExameTest {
         String validarExameCadastrado = exameTela.validarExameCadastrado();
         String validarExameCadastrado2 = exameTela.validarExameCadastrado2();
 
-        Assertions.assertEquals("Tudo certo!", validarExameCadastrado);
-        Assertions.assertEquals("Exame enviado com sucesso!", validarExameCadastrado2);
+        Assertions.assertEquals(exameTela.mensagemTudoCerto(), validarExameCadastrado);
+        Assertions.assertEquals(exameTela.mensagemSucesso(), validarExameCadastrado2);
     }
     @Test
-    @DisplayName("Cadastrar um exame corretamente por Câmera")
-    public void testCadastrarUmExameCorretamentePorCamera(){
+    @DisplayName("Realizar o cadastro de um exame selecionando uma categoria e anexando uma foto da câmera e salvar.")
+    public void testRealizarOCadastroDeUmExameSelecionandoUmaCategoriaEAnexandoUmaFotoDaCameraESalvar(){
         ExameTela exameTela = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -76,12 +76,12 @@ public class ExameTest {
         String validarExameCadastrado = exameTela.validarExameCadastrado();
         String validarExameCadastrado2 = exameTela.validarExameCadastrado2();
 
-        Assertions.assertEquals("Tudo certo!", validarExameCadastrado);
-        Assertions.assertEquals("Exame enviado com sucesso!", validarExameCadastrado2);
+        Assertions.assertEquals(exameTela.mensagemTudoCerto(), validarExameCadastrado);
+        Assertions.assertEquals(exameTela.mensagemSucesso(), validarExameCadastrado2);
     }
     @Test
-    @DisplayName("Cadastrar um exame corretamente por Documento")
-    public void testCadastrarUmExameCorretamentePorDocumento(){
+    @DisplayName("Realizar o cadastro de um exame selecionando uma categoria e anexando um documento e salvar.")
+    public void testRealizarOCadastroDeUmExameSelecionandoUmaCategoriaEAnexandoUmDocumentoESalvar(){
         ExameTela exameTela = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -104,12 +104,12 @@ public class ExameTest {
         String validarExameCadastrado = exameTela.validarExameCadastrado();
         String validarExameCadastrado2 = exameTela.validarExameCadastrado2();
 
-        Assertions.assertEquals("Tudo certo!", validarExameCadastrado);
-        Assertions.assertEquals("Exame enviado com sucesso!", validarExameCadastrado2);
+        Assertions.assertEquals(exameTela.mensagemTudoCerto(), validarExameCadastrado);
+        Assertions.assertEquals(exameTela.mensagemSucesso(), validarExameCadastrado2);
     }
     @Test
-    @DisplayName("Excluir um exame")
-    public void testExcluirUmExame(){
+    @DisplayName("Realizar a exclusão de um exame cadastrado.")
+    public void testRealizarAExclusaoDeUmExameCadastrado(){
         ExameTela exameTela = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -128,34 +128,12 @@ public class ExameTest {
         String validarExameExcluido = exameTela.validarExameExcluido();
         String validarExameExcluido2 = exameTela.validarExameExcluido2();
 
-        Assertions.assertEquals("Tudo certo!", validarExameExcluido);
-        Assertions.assertEquals("Exame excluído com sucesso!", validarExameExcluido2);
+        Assertions.assertEquals(exameTela.mensagemTudoCerto(), validarExameExcluido);
+        Assertions.assertEquals(exameTela.mensagemExcluido(), validarExameExcluido2);
     }
     @Test
-    @DisplayName("Cadastrar um exame sem categoria e anexo")
-    public void testCadastrarUmExameSemCategoriaEAnexo(){
-         String mensagemRetorno = new LoginTela(app)
-                .botaoAvancar()
-                .botaoAvancar()
-                .botaoAvancar()
-                .escreverCPF("02971008312")
-                .escreverSenha("Fale1234@")
-                .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
-                .botaoExame()
-                .botaoPermitirFotoEVideos()
-                .botaoAcessoFotoEVideos()
-                .botaoAdicionarNovo()
-                .botaoSalvar()
-                .validarExamebtnSalvarDisable();
-
-        Assertions.assertEquals("Adicionar novo", mensagemRetorno);
-    }
-    @Test
-    @DisplayName("Validar os dados de um exame cadastrado")
-    public void testParaValidarOsDadosDeUmExameCadastrado(){
+    @DisplayName("Realizar o cadastro de um exame sem selecionar uma categoria e sem anexar um Exame.")
+    public void testRealizarOCadastroDeUmExameSemSelecionarUmaCategoriaESemAnexarUmExame(){
         ExameTela exameTela = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -169,20 +147,18 @@ public class ExameTest {
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
                 .botaoAcessoFotoEVideos()
-                .clicarSobreExame();
+                .botaoAdicionarNovo()
+                .botaoSalvar();
 
-        String campoTipoExame = exameTela.CampoTipoExame();
-        String CampoData = exameTela.CampoData();
-        String ExameAnexados = exameTela.campoExamesAnexados();
+        String btnDesabilitado = exameTela.validarExamebtnSalvarDisable();
 
-        Assertions.assertEquals("Tipo de Exame:", campoTipoExame);
-        Assertions.assertEquals("Data", CampoData);
-        Assertions.assertEquals("Exames Anexados", ExameAnexados);
+        Assertions.assertEquals(exameTela.mensagemNovo(), btnDesabilitado);
     }
+
     @Test
-    @DisplayName("Validar o botão cancelar em anexar")
-    public void testParaValidarOBotaoCancelarEmAnexar(){
-        String mensagemRetorno = new LoginTela(app)
+    @DisplayName("Realizar clique no botão Anexar exame e na opção Cancelar.")
+    public void testRealizarCliqueNoBotaoAnexarExameENaOpcaoCancelar(){
+        ExameTela exameTela = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
@@ -197,15 +173,16 @@ public class ExameTest {
                 .botaoAcessoFotoEVideos()
                 .botaoAdicionarNovo()
                 .botaoAnexarExame()
-                .clicarBtnCancelarAnexar()
-                .validarExamebtnSalvarDisable();
+                .clicarBtnCancelarAnexar();
 
-        Assertions.assertEquals("Adicionar novo", mensagemRetorno);
+        String btnDesabilitado = exameTela.validarExamebtnSalvarDisable();
+
+        Assertions.assertEquals(exameTela.mensagemNovo(), btnDesabilitado);
     }
     @Test
-    @DisplayName("Validar o botão cancelar em categoria")
-    public void testParaValidarOBotaoCancelarEmCategoria(){
-        String mensagemRetorno = new LoginTela(app)
+    @DisplayName("Realizar clique no campo Selecione a categoria e na opção Cancelar.")
+    public void testRealizarCliqueNoCampoSelecioneACategoriaENaOpcaoCancelar(){
+        ExameTela exameTela = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
@@ -220,10 +197,11 @@ public class ExameTest {
                 .botaoAcessoFotoEVideos()
                 .botaoAdicionarNovo()
                 .btnCategoria()
-                .clicarBtnCancelarCategoria()
-                .validarExamebtnSalvarDisable();
+                .clicarBtnCancelarCategoria();
 
-        Assertions.assertEquals("Adicionar novo", mensagemRetorno);
+        String btnDesabilitado = exameTela.validarExamebtnSalvarDisable();
+
+        Assertions.assertEquals(exameTela.mensagemNovo(), btnDesabilitado);
     }
 
     @After
