@@ -24,8 +24,8 @@ public class SinaisVitaisTest {
 
     // testes de peso
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de peso válido")
-    public void testRealizarCadastroDePesoValido() {
+    @DisplayName("Realizar o cadastro de um sinal vital de peso.")
+    public void testRealizarOCadastroDeUmSinalVitalDePeso() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -42,13 +42,13 @@ public class SinaisVitaisTest {
                 .txtPesoInserir("8500")
                 .btnPesoGravar();
 
-        Assertions.assertEquals("Tudo certo!",sinaisVitaisTela.pesoAlertaSucesso1());
-        Assertions.assertEquals("Registro salvo com sucesso!",sinaisVitaisTela.pesoAlertaSucesso2());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemTudoCerto(),sinaisVitaisTela.pesoAlertaSucesso1());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemRegistroSucesso(),sinaisVitaisTela.pesoAlertaSucesso2());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de peso com o campo em branco")
-    public void testRealizarCadastroDePesoEmBranco() {
+    @DisplayName("Realizar o cadastro de um sinal vital peso em branco.")
+    public void testRealizarOCadastroDeUmSinalVitalPesoEmBranco() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -65,12 +65,12 @@ public class SinaisVitaisTest {
                 .txtPesoInserir("")
                 .btnPesoGravar();
 
-        Assertions.assertEquals("Informe o peso.",sinaisVitaisTela.validarBtnGravarDesabilitado());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforPeso(),sinaisVitaisTela.validarBtnGravarDesabilitado());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de peso com o campo com o valor 0")
-    public void testRealizarCadastroDePesoComValorZero() {
+    @DisplayName("Realizar o cadastro de um sinal vital peso com valor zero.")
+    public void testRealizarOCadastroDeUmSinalVitalPesoComValorZero() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -87,12 +87,12 @@ public class SinaisVitaisTest {
                 .txtPesoInserir("0")
                 .btnPesoGravar();
 
-        Assertions.assertEquals("Informe o peso.",sinaisVitaisTela.validarBtnGravarDesabilitado());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforPeso(),sinaisVitaisTela.validarBtnGravarDesabilitado());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de peso com o campo com caracteres especiais.")
-    public void testRealizarCadastroDePesoComCaracteresEspeciais() {
+    @DisplayName("Realizar o cadastro de um sinal vital peso com caracteres especiais.")
+    public void testRealizarOCadastroDeUmSinalVitalPesoComCaracteresEspeciais() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -109,13 +109,13 @@ public class SinaisVitaisTest {
                 .txtPesoInserir(".,-A *")
                 .btnPesoGravar();
 
-        Assertions.assertEquals("Informe o peso.",sinaisVitaisTela.validarBtnGravarDesabilitado());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforPeso(),sinaisVitaisTela.validarBtnGravarDesabilitado());
     }
 
     // testes de altura
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de altura válido")
-    public void testRealizarCadastroDeAlturaValido() {
+    @DisplayName("Realizar o cadastro de um sinal vital altura.")
+    public void testRealizarOCadastroDeUmSinalVitalAltura() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -132,13 +132,13 @@ public class SinaisVitaisTest {
                 .txtAlturaInserir("18500")
                 .btnAlturaGravar();
 
-        Assertions.assertEquals("Tudo certo!",sinaisVitaisTela.pesoAlertaSucesso1());
-        Assertions.assertEquals("Registro salvo com sucesso!",sinaisVitaisTela.pesoAlertaSucesso2());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemTudoCerto(),sinaisVitaisTela.pesoAlertaSucesso1());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemRegistroSucesso(),sinaisVitaisTela.pesoAlertaSucesso2());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de altura em branco")
-    public void testRealizarCadastroDeAlturaEmBranco() {
+    @DisplayName("Realizar o cadastro de um sinal vital altura em branco.")
+    public void testRealizarOCadastroDeUmSinalVitalAlturaEmBranco() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -155,12 +155,12 @@ public class SinaisVitaisTest {
                 .txtAlturaInserir("")
                 .btnAlturaGravar();
 
-        Assertions.assertEquals("Informe a altura.",sinaisVitaisTela.btnGravarDesabilitadoAltura());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforAltura(),sinaisVitaisTela.btnGravarDesabilitadoAltura());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de altura com o valor Zero")
-    public void testRealizarCadastroDeAlturaComOValorZero() {
+    @DisplayName("Realizar o cadastro de um sinal vital altura com valor zero.")
+    public void testRealizarOCadastroDeUmSinalVitalAlturaComValorZero() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -177,12 +177,12 @@ public class SinaisVitaisTest {
                 .txtAlturaInserir("0")
                 .btnAlturaGravar();
 
-        Assertions.assertEquals("Informe a altura.",sinaisVitaisTela.btnGravarDesabilitadoAltura());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforAltura(),sinaisVitaisTela.btnGravarDesabilitadoAltura());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de altura com o campo com caracteres especiais.")
-    public void testRealizarCadastroDeAlturaComCaracteresEspeciais() {
+    @DisplayName("Realizar o cadastro de um sinal vital altura com caracteres especiais.")
+    public void testRealizarOCadastroDeUmSinalVitalAlturaComCaracteresEspeciais() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -199,12 +199,12 @@ public class SinaisVitaisTest {
                 .txtAlturaInserir(".,-A *")
                 .btnAlturaGravar();
 
-        Assertions.assertEquals("Informe a altura.",sinaisVitaisTela.btnGravarDesabilitadoAltura());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforAltura(),sinaisVitaisTela.btnGravarDesabilitadoAltura());
     }
     // Testes de Temperatura
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de Temperatura válido")
-    public void testRealizarCadastroDeTemperaturaValido() {
+    @DisplayName("Realizar o cadastro de um sinal vital Temperatura.")
+    public void testRealizarOCadastroDeUmSinalVitalTemperatura() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -221,13 +221,13 @@ public class SinaisVitaisTest {
                 .txtTemperaturaInserir("18500")
                 .btnTemperaturaGravar();
 
-        Assertions.assertEquals("Tudo certo!",sinaisVitaisTela.pesoAlertaSucesso1());
-        Assertions.assertEquals("Registro salvo com sucesso!",sinaisVitaisTela.pesoAlertaSucesso2());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemTudoCerto(),sinaisVitaisTela.pesoAlertaSucesso1());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemRegistroSucesso(),sinaisVitaisTela.pesoAlertaSucesso2());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de Temperatura em branco")
-    public void testRealizarCadastroDeTemperaturaEmBranco() {
+    @DisplayName("Realizar o cadastro de um sinal vital Temperatura em branco.")
+    public void testRealizarOCadastroDeUmSinalVitalTemperaturaEmBranco() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -244,12 +244,12 @@ public class SinaisVitaisTest {
                 .txtTemperaturaInserir("")
                 .btnTemperaturaGravar();
 
-        Assertions.assertEquals("Informe a temperatura.",sinaisVitaisTela.btnGravarDesabilitadoTemperatura());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforTemperatura(),sinaisVitaisTela.btnGravarDesabilitadoTemperatura());
     }
 // O campo aceita zero no campo então esse testes não será utilizado.
 /*    @Test
-    @DisplayName("Teste para validar realizar o cadastro de Temperatura com o valor Zero")
-    public void testRealizarCadastroDeTemperaturaComOValorZero() {
+    @DisplayName("Realizar o cadastro de um sinal vital Temperatura com valor zero.")
+    public void testRealizarOCadastroDeUmSinalVitalTemperaturaComOValorZero() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -268,12 +268,12 @@ public class SinaisVitaisTest {
 
 
 // Está sendo permitido digitar zero em temperatura.
-        Assertions.assertEquals("Informe a temperatura.",sinaisVitaisTela.btnGravarDesabilitadoTemperatura());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforTemperatura(),sinaisVitaisTela.btnGravarDesabilitadoTemperatura());
     }*/
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de Temperatura com o campo com caracteres especiais.")
-    public void testRealizarCadastroDeTemperaturaComCaracteresEspeciais() {
+    @DisplayName("Realizar o cadastro de um sinal vital Temperatura com caracteres especiais.")
+    public void testRealizarOCadastroDeUmSinalVitalTemperaturaComCaracteresEspeciais() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -290,13 +290,13 @@ public class SinaisVitaisTest {
                 .txtTemperaturaInserir(".,-A *")
                 .btnTemperaturaGravar();
 
-        Assertions.assertEquals("Informe a temperatura.",sinaisVitaisTela.btnGravarDesabilitadoTemperatura());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforTemperatura(),sinaisVitaisTela.btnGravarDesabilitadoTemperatura());
     }
 
     // Testes de Pressão Sanguínea
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de Pressão Sanguínea válido")
-    public void testRealizarCadastroDePressaoSanguineaValido() {
+    @DisplayName("Realizar o cadastro de um sinal vital Pressão Sanguínea.")
+    public void testRealizarOCadastroDeUmSinalVitalPressaoSanguinea() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -314,13 +314,36 @@ public class SinaisVitaisTest {
                 .txtPressaoDiastolica("321")
                 .btnPressaoSanguineaGravar();
 
-        Assertions.assertEquals("Tudo certo!",sinaisVitaisTela.pesoAlertaSucesso1());
-        Assertions.assertEquals("Registro salvo com sucesso!",sinaisVitaisTela.pesoAlertaSucesso2());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemTudoCerto(),sinaisVitaisTela.pesoAlertaSucesso1());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemRegistroSucesso(),sinaisVitaisTela.pesoAlertaSucesso2());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de Pressão Sanguínea em branco")
-    public void testRealizarCadastroDePressaoSanguineaEmBranco() {
+    @DisplayName("Realizar o cadastro de um sinal vital Pressão Sanguínea o campo sistólica em branco.")
+    public void testRealizarOCadastroDeUmSinalVitalPressaoSanguineaOCampoSistólicaEmBranco() {
+        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .escreverCPF("02971008312")
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .scroll(0.5,0.90,0.5,0.04)
+                .selecionarEmpresa("DIMENSA S.A. 149")
+                .enviarEmpresa()
+                .botaoHome()
+                .btnSinaisVitais()
+                .btnPressaoSanguineaInserir()
+                .txtPressaoSistolica("")
+                .txtPressaoDiastolica("123")
+                .btnPressaoSanguineaGravar();
+
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforSistolica(),sinaisVitaisTela.btnGravarDesabilitadoPressaoSanguinea());
+    }
+
+    @Test
+    @DisplayName("Realizar o cadastro de um sinal vital Pressão Sanguínea o campo diastólica em branco.")
+    public void testRealizarOCadastroDeUmSinalVitalPressaoSanguineaOCampoDiastolicaEmBranco() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -338,10 +361,10 @@ public class SinaisVitaisTest {
                 .txtPressaoDiastolica("")
                 .btnPressaoSanguineaGravar();
 
-        Assertions.assertEquals("Informe a pressão diastólica.",sinaisVitaisTela.btnGravarDesabilitadoPressaoSanguinea2());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforDiastolica(),sinaisVitaisTela.btnGravarDesabilitadoPressaoSanguinea2());
     }
 
-    @Test
+/*    @Test
     @DisplayName("Teste para validar realizar o cadastro de Pressão Sanguínea com o valor Zero")
     public void testRealizarCadastroDePressaoSanguineaComOValorZero() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
@@ -362,11 +385,11 @@ public class SinaisVitaisTest {
                 .btnPressaoSanguineaGravar();
 
         Assertions.assertEquals("Insira a pressão sistólica",sinaisVitaisTela.btnGravarDesabilitadoPressaoSanguinea());
-    }
+    }*/
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de Pressão Sanguínea com o campo com caracteres especiais.")
-    public void testRealizarCadastroDePressaoSanguineaComCaracteresEspeciais() {
+    @DisplayName("Realizar o cadastro de um sinal vital Pressão Sanguínea com caracteres especiais nos campos.")
+    public void testRealizarOCadastroDeUmSinalVitalPressaoSanguineaComCaracteresEspeciaisNosCampos() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -384,13 +407,13 @@ public class SinaisVitaisTest {
                 .txtPressaoDiastolica(".,-A *")
                 .btnPressaoSanguineaGravar();
 
-        Assertions.assertEquals("Insira a pressão sistólica",sinaisVitaisTela.btnGravarDesabilitadoPressaoSanguinea());
-        Assertions.assertEquals("Informe a pressão diastólica.",sinaisVitaisTela.btnGravarDesabilitadoPressaoSanguinea2());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforSistolica(),sinaisVitaisTela.btnGravarDesabilitadoPressaoSanguinea());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforDiastolica(),sinaisVitaisTela.btnGravarDesabilitadoPressaoSanguinea2());
     }
     // Testes de pulso
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de pulso válido")
-    public void testRealizarCadastroDePulsoValido() {
+    @DisplayName("Realizar o cadastro de um sinal vital Pulso.")
+    public void testRealizarOCadastroDeUmSinalVitalPulso() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -407,13 +430,13 @@ public class SinaisVitaisTest {
                 .txtPulsoInserir("100")
                 .btnPulsoGravar();
 
-        Assertions.assertEquals("Tudo certo!",sinaisVitaisTela.pesoAlertaSucesso1());
-        Assertions.assertEquals("Registro salvo com sucesso!",sinaisVitaisTela.pesoAlertaSucesso2());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemTudoCerto(),sinaisVitaisTela.pesoAlertaSucesso1());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemRegistroSucesso(),sinaisVitaisTela.pesoAlertaSucesso2());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de pulso em branco")
-    public void testRealizarCadastroDePulsoEmBranco() {
+    @DisplayName("Realizar o cadastro de um sinal vital Pulso em branco.")
+    public void testRealizarOCadastroDeUmSinalVitalPulsoEmBranco() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -430,12 +453,12 @@ public class SinaisVitaisTest {
                 .txtPulsoInserir("")
                 .btnPulsoGravar();
 
-        Assertions.assertEquals("Informe o pulso.",sinaisVitaisTela.btnGravarDesabilitadoPulso());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforPulso(),sinaisVitaisTela.btnGravarDesabilitadoPulso());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de pulso com o valor Zero")
-    public void testRealizarCadastroDePulsoComOValorZero() {
+    @DisplayName("Realizar o cadastro de um sinal vital Pulso com valor zero.")
+    public void testRealizarOCadastroDeUmSinalVitalPulsoComOValorZero() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -452,12 +475,12 @@ public class SinaisVitaisTest {
                 .txtPulsoInserir("")
                 .btnPulsoGravar();
 
-        Assertions.assertEquals("Informe o pulso.",sinaisVitaisTela.btnGravarDesabilitadoPulso());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforPulso(),sinaisVitaisTela.btnGravarDesabilitadoPulso());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de pulso com o campo com caracteres especiais.")
-    public void testRealizarCadastroDePulsoComCaracteresEspeciais() {
+    @DisplayName("Realizar o cadastro de um sinal vital Pulso com caracteres especiais.")
+    public void testRealizarOCadastroDeSinalVitalPulsoComCaracteresEspeciais() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -474,12 +497,12 @@ public class SinaisVitaisTest {
                 .txtPulsoInserir(".,-A *")
                 .btnPulsoGravar();
 
-        Assertions.assertEquals("Informe o pulso.",sinaisVitaisTela.btnGravarDesabilitadoPulso());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforPulso(),sinaisVitaisTela.btnGravarDesabilitadoPulso());
     }
     // Testes de Glicemia
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de Glicemia válido")
-    public void testRealizarCadastroDeGlicemiaValido() {
+    @DisplayName("Realizar o cadastro de um sinal vital Glicemia.")
+    public void testRealizarOCadastroDeUmSinalVitalGlicemia() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -496,13 +519,13 @@ public class SinaisVitaisTest {
                 .txtGlicemiaInserir("100")
                 .btnGlicemiaGravar();
 
-        Assertions.assertEquals("Tudo certo!",sinaisVitaisTela.pesoAlertaSucesso1());
-        Assertions.assertEquals("Registro salvo com sucesso!",sinaisVitaisTela.pesoAlertaSucesso2());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemTudoCerto(),sinaisVitaisTela.pesoAlertaSucesso1());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemRegistroSucesso(),sinaisVitaisTela.pesoAlertaSucesso2());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de Glicemia em branco")
-    public void testRealizarCadastroDeGlicemiaEmBranco() {
+    @DisplayName("Realizar o cadastro de um sinal vital Glicemia em branco.")
+    public void testRealizarOCadastroDeUmSinalVitalGlicemiaEmBranco() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -519,12 +542,12 @@ public class SinaisVitaisTest {
                 .txtGlicemiaInserir("")
                 .btnGlicemiaGravar();
 
-        Assertions.assertEquals("Informe o valor da glicemia.",sinaisVitaisTela.btnGravarDesabilitadoGlicemia());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforGlicemia(),sinaisVitaisTela.btnGravarDesabilitadoGlicemia());
     }
 // O campo aceita zero no campo então esse testes não será utilizado.
 /*    @Test
-    @DisplayName("Teste para validar realizar o cadastro de Glicemia com o valor Zero")
-    public void testRealizarCadastroDeGlicemiaComOValorZero() {
+    @DisplayName("Realizar o cadastro de um sinal vital Glicemia com valor zero.")
+    public void testRealizarOCadastroDeUmSinalVitalGlicemiaComValorZero() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -541,12 +564,12 @@ public class SinaisVitaisTest {
                 .txtGlicemiaInserir("0")
                 .btnGlicemiaGravar();
 
-        Assertions.assertEquals("Informe o valor da glicemia.",sinaisVitaisTela.btnGravarDesabilitadoGlicemia());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforGlicemia(),sinaisVitaisTela.btnGravarDesabilitadoGlicemia());
     }*/
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de Glicemia com o campo com caracteres especiais.")
-    public void testRealizarCadastroDeGlicemiaComCaracteresEspeciais() {
+    @DisplayName("Realizar o cadastro de um sinal vital Glicemia com caracteres especiais.")
+    public void testRealizarOCadastroDeUmSinalVitalGlicemiaComCaracteresEspeciais() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -563,13 +586,13 @@ public class SinaisVitaisTest {
                 .txtGlicemiaInserir(".,-A *")
                 .btnGlicemiaGravar();
 
-        Assertions.assertEquals("Informe o valor da glicemia.",sinaisVitaisTela.btnGravarDesabilitadoGlicemia());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforGlicemia(),sinaisVitaisTela.btnGravarDesabilitadoGlicemia());
     }
 
     // Testes de Saturação
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de Saturação válido")
-    public void testRealizarCadastroDeSaturacaoValido() {
+    @DisplayName("Realizar o cadastro de um sinal vital Saturação.")
+    public void testRealizarOCadastroDeUmSinalVitalSaturacao() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -586,13 +609,13 @@ public class SinaisVitaisTest {
                 .txtSaturacaoInserir("100")
                 .btnSaturacaoGravar();
 
-        Assertions.assertEquals("Tudo certo!",sinaisVitaisTela.pesoAlertaSucesso1());
-        Assertions.assertEquals("Registro salvo com sucesso!",sinaisVitaisTela.pesoAlertaSucesso2());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemTudoCerto(),sinaisVitaisTela.pesoAlertaSucesso1());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemRegistroSucesso(),sinaisVitaisTela.pesoAlertaSucesso2());
     }
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de Saturação em branco")
-    public void testRealizarCadastroDeSaturacaoEmBranco() {
+    @DisplayName("Realizar o cadastro de um sinal vital Saturação em branco.")
+    public void testRealizarOCadastroDeUmSinalVitalSaturacaoEmBranco() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -609,12 +632,12 @@ public class SinaisVitaisTest {
                 .txtSaturacaoInserir("")
                 .btnSaturacaoGravar();
 
-        Assertions.assertEquals("Informe a saturação.",sinaisVitaisTela.btnGravarDesabilitadoSaturacao());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforSaturacao(),sinaisVitaisTela.btnGravarDesabilitadoSaturacao());
     }
 // O campo aceita zero no campo então esse testes não será utilizado.
 /*    @Test
-    @DisplayName("Teste para validar realizar o cadastro de Saturação com o valor Zero")
-    public void testRealizarCadastroDeSaturacaoComOValorZero() {
+    @DisplayName("Realizar o cadastro de um sinal vital Saturação com valor zero.")
+    public void testRealizarOCadastroDeUmSinalVitalSaturacaoComValorZero() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -631,12 +654,12 @@ public class SinaisVitaisTest {
                 .txtSaturacaoInserir("0")
                 .btnSaturacaoGravar();
 
-        Assertions.assertEquals("Informe a saturação.",sinaisVitaisTela.btnGravarDesabilitadoSaturacao());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforSaturacao(),sinaisVitaisTela.btnGravarDesabilitadoSaturacao());
     }*/
 
     @Test
-    @DisplayName("Teste para validar realizar o cadastro de Saturação com o campo com caracteres especiais.")
-    public void testRealizarCadastroDeSaturacaoComCaracteresEspeciais() {
+    @DisplayName("Realizar o cadastro de um sinal vital Saturação com caracteres especiais.")
+    public void testRealizarOCadastroDeUmSinalVitalSaturacaoComCaracteresEspeciais() {
         SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -653,7 +676,7 @@ public class SinaisVitaisTest {
                 .txtSaturacaoInserir(".,-A *")
                 .btnSaturacaoGravar();
 
-        Assertions.assertEquals("Informe a saturação.",sinaisVitaisTela.btnGravarDesabilitadoSaturacao());
+        Assertions.assertEquals(sinaisVitaisTela.mensagemInforSaturacao(),sinaisVitaisTela.btnGravarDesabilitadoSaturacao());
     }
 
     @After

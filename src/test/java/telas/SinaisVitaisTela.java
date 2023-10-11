@@ -137,4 +137,36 @@ public class SinaisVitaisTela {
     public String btnGravarDesabilitadoSaturacao(){
         return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.widget.EditText")).getText();
     }
+
+    /*** Mensagens padrões ***/
+    public String mensagemTudoCerto(){
+        return "Tudo certo!";
+    }
+    public String mensagemRegistroSucesso(){
+        return "Registro salvo com sucesso!";
+    }
+    public String mensagemInforPeso(){
+        return "Informe o peso.";
+    }
+    public String mensagemInforAltura(){
+        return "Informe a altura.";
+    }
+    public String mensagemInforTemperatura(){
+        return "Informe a temperatura.";
+    }
+    public String mensagemInforSistolica(){
+        return "Informe a pressão sistólica.";
+    }
+    public String mensagemInforDiastolica(){
+        return "Informe a pressão diastólica.";
+    }
+    public String mensagemInforPulso(){
+        return "Informe o pulso.";
+    }
+    public String mensagemInforGlicemia(){
+        return "Informe o valor da glicemia.";
+    }
+    public String mensagemInforSaturacao(){
+        return "Informe a saturação.";
+    }
 }
