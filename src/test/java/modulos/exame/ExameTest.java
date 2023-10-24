@@ -7,8 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import telas.BemVindoTela;
 import telas.ExameTela;
-import telas.LoginTela;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,23 +26,22 @@ public class ExameTest {
     @Test
     @DisplayName("Realizar o cadastro de um exame selecionando uma categoria e anexando uma imagem da galeria de imagens e salvar.")
     public void testRealizarOCadastroDeUmExameSelecionandoUmaCategoriaEAnexoUmaImagemDaGaleriaDeImagensESalvar(){
-        ExameTela exameTela = new LoginTela(app)
+        ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
+                .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
                 .botaoAcessoFotoEVideos()
                 .botaoAdicionarNovo()
                 .campoSelecioneCategoria("Raio-X")
                 .botaoAnexarExame()
-                .botaoGaleria()
+                .botaoGaleria() //aqui
                 .botaoSalvar();
 
         String validarExameCadastrado = exameTela.validarExameCadastrado();
@@ -54,16 +53,15 @@ public class ExameTest {
     @Test
     @DisplayName("Realizar o cadastro de um exame selecionando uma categoria e anexando uma foto da câmera e salvar.")
     public void testRealizarOCadastroDeUmExameSelecionandoUmaCategoriaEAnexandoUmaFotoDaCameraESalvar(){
-        ExameTela exameTela = new LoginTela(app)
+        ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
+                .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
                 .botaoAcessoFotoEVideos()
@@ -82,16 +80,15 @@ public class ExameTest {
     @Test
     @DisplayName("Realizar o cadastro de um exame selecionando uma categoria e anexando um documento e salvar.")
     public void testRealizarOCadastroDeUmExameSelecionandoUmaCategoriaEAnexandoUmDocumentoESalvar(){
-        ExameTela exameTela = new LoginTela(app)
+        ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
+                .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
                 .botaoAcessoFotoEVideos()
@@ -110,16 +107,15 @@ public class ExameTest {
     @Test
     @DisplayName("Realizar a exclusão de um exame cadastrado.")
     public void testRealizarAExclusaoDeUmExameCadastrado(){
-        ExameTela exameTela = new LoginTela(app)
+        ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
+                .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
                 .botaoAcessoFotoEVideos()
@@ -134,16 +130,15 @@ public class ExameTest {
     @Test
     @DisplayName("Realizar o cadastro de um exame sem selecionar uma categoria e sem anexar um Exame.")
     public void testRealizarOCadastroDeUmExameSemSelecionarUmaCategoriaESemAnexarUmExame(){
-        ExameTela exameTela = new LoginTela(app)
+        ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
+                .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
                 .botaoAcessoFotoEVideos()
@@ -158,16 +153,15 @@ public class ExameTest {
     @Test
     @DisplayName("Realizar clique no botão Anexar exame e na opção Cancelar.")
     public void testRealizarCliqueNoBotaoAnexarExameENaOpcaoCancelar(){
-        ExameTela exameTela = new LoginTela(app)
+        ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
+                .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
                 .botaoAcessoFotoEVideos()
@@ -182,16 +176,15 @@ public class ExameTest {
     @Test
     @DisplayName("Realizar clique no campo Selecione a categoria e na opção Cancelar.")
     public void testRealizarCliqueNoCampoSelecioneACategoriaENaOpcaoCancelar(){
-        ExameTela exameTela = new LoginTela(app)
+        ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
+                .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
                 .botaoAcessoFotoEVideos()

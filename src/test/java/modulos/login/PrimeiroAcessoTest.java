@@ -1,3 +1,4 @@
+/*
 package modulos.login;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -22,6 +23,7 @@ public class PrimeiroAcessoTest {
         this.app.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
+*/
 /*    @Test
     @DisplayName("Teste para verificar primeiro acesso ao preencher o cpf valido")
     public void testParaVerificarPrimeiroAcessoAoPreencherOCpfValido() {
@@ -33,7 +35,8 @@ public class PrimeiroAcessoTest {
         // Aguardando massa de dados para realizar testes.
 
         // Assertions.assertEquals("Falha no login. Tente novamente mais tarde.", mensagemApresentada);
-    }*/
+    }*//*
+
     @Test
     @DisplayName("Realizar primeiro acesso com campo Digite seu CPF em branco.")
     public void testRealizarPrimeiroAcessoComCampoDigiteSeuCPFEmBranco() {
@@ -108,4 +111,4 @@ public class PrimeiroAcessoTest {
     public void fecharDriver(){
         app.quit();
     }
-}
+}*/

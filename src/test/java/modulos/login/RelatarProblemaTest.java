@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import telas.BemVindoTela;
 import telas.LoginTela;
 
 import java.util.concurrent.TimeUnit;
@@ -23,11 +24,13 @@ public class RelatarProblemaTest {
     @Test
     @DisplayName("Relatar um problema técnico corretamente preenchendo os campos Nome, Telefone, Mensagem e Enviando.")
     public void testRelatarUmProblemaTecnicoCorretamentePreenchendoOsCampoNomeTelefoneMensagemEEnviando() {
-        LoginTela loginTela = new LoginTela(app)
+        LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .relatarProblema()
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
+                .faleComAGente()
                 .digitarNomeRelatarProblema("Fulano da Silva")
                 .digitarTelefoneRelatarProblema("85999999999")
                 .digitarMensagemRelatarProblema("Mensagem testes para enviar um problema a ser reportado.")
@@ -42,11 +45,13 @@ public class RelatarProblemaTest {
     @Test
     @DisplayName("Relatar um problema técnico invalido não preenchendo os campos Nome, Telefone, Mensagem e Enviando.")
     public void testRelatarUmProblemaTecnicoInvalidoNaoPreenchendoOsCamposNomeTelefoneMensagemEEnviando() {
-        LoginTela loginTela = new LoginTela(app)
+        LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .relatarProblema()
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
+                .faleComAGente()
                 .botaoEnviarRelatarProblema();
 
         String mensagemNomeObrigatorio = loginTela.mensagemNomeObrigatorio();
@@ -58,13 +63,15 @@ public class RelatarProblemaTest {
         Assertions.assertEquals("Informe o problema", mensagemObrigatorio);
     }
     @Test
-    @DisplayName("Digitar caracteres especiais ou letras no campo Telefone.")
-    public void testDigitarCaracteresEspeciaisOuLetrasNoCampoTelefone() {
-        LoginTela loginTela = new LoginTela(app)
+    @DisplayName("Relatar um problema com caracteres especiais ou letras no campo Telefone.")
+    public void testRelatarUmProblemaComCaracteresEspeciaisOuLetrasNoCampoTelefone() {
+        LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .relatarProblema()
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
+                .faleComAGente()
                 .digitarTelefoneRelatarProblema("%./@!test,")
                 .botaoEnviarRelatarProblema();
 
@@ -75,15 +82,17 @@ public class RelatarProblemaTest {
     @Test
     @DisplayName("Clicar na funcionalidade botão cancelar.")
     public void testClicarNaFuncionalidadeBotaoCancelar() {
-        String textoRelatarproblema = new LoginTela(app)
+        String textoRelatarproblema = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .relatarProblema()
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
+                .faleComAGente()
                 .botaoCancelarRelatarProblema()
-                .textoRelatarproblema();
+                .textoFaleComAGente();
 
-        Assertions.assertEquals("Relatar Problema Técnico", textoRelatarproblema);
+        Assertions.assertEquals("Fale com a gente", textoRelatarproblema);
     }
 
     @After

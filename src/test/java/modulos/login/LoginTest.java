@@ -7,7 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import telas.BemVindoTela;
 import telas.LoginTela;
+
 import java.util.concurrent.TimeUnit;
 
 public class LoginTest {
@@ -21,77 +23,95 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Realizar login com sucesso com um usuário cadastrado em apenas uma entidade.")
+    public void testRealizarLoginComSucessoComUmUsuarioCadastradoEmApenasUmaEntidade() {
+        String mensagemApresentada = new BemVindoTela(app)
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
+                .escreverSenha("Fale1234@")
+                .botaoEntrar()
+                .botaoHome()
+                .validarAcesso();
+
+        Assertions.assertEquals("Olá, Sávio", mensagemApresentada);
+    }
+
+    @Test
     @DisplayName("Realizar login com sucesso com um usuário cadastrado em mais de uma entidade")
     public void testRealizarLoginComSucessoComUmUsuarioCadastroEmMaisDeUmaEntidade() {
-        String mensagemApresentada = new LoginTela(app)
+        String mensagemApresentada = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
+                .txtCpf("02971008312")
+                .btnAvancar()
+                .selecionarEmpresabem()
+                .btnEmpresaAvancar()
                 .escreverCPF("02971008312")
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
+                .botaoHome()
                 .validarAcesso();
 
         Assertions.assertEquals("Olá, Sávio", mensagemApresentada);
     }
 
     @Test
-    @DisplayName("Realizar login com sucesso com um usuário cadastrado em apenas uma entidade.")
-    public void testRealizarLoginComSucessoComUmUsuarioCadastradoEmApenasUmaEntidade() {
-        String mensagemApresentada = new LoginTela(app)
+    @DisplayName("Realizar login alterando o CPF do campo CPF.")
+    public void testRealizarLoginAlterandoOCPFDoCampoCPF() {
+        String informacaoCampoCPF = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("48135484070")
-                .escreverSenha("019980")
-                .botaoProximo()
-                .validarAcesso();
-
-        Assertions.assertEquals("Olá, Sávio", mensagemApresentada);
-    }
-
-    @Test
-    @DisplayName("Realizar login com CPF não cadastrado.")
-    public void testRealizarLoginComCPFNaoCadastrado() {
-        String mensagemApresentada = new LoginTela(app)
-                .botaoAvancar()
-                .botaoAvancar()
-                .botaoAvancar()
+                .txtCpf("02971008312")
+                .btnAvancar()
+                .selecionarEmpresabem()
+                .btnEmpresaAvancar()
                 .escreverCPF("76549427029")
-                .escreverSenha("senha123")
-                .botaoEntrarComErro()
-                .mensagem();
+                .informacaoCampoCPF();
 
-        Assertions.assertEquals("Usuário não encontrado ou senha incorreta.", mensagemApresentada);
+        Assertions.assertEquals("029.710.083-12", informacaoCampoCPF);
     }
 
     @Test
-    @DisplayName("Realizar login com campos CPF e Senha em branco.")
-    public void testRealizarLoginComCamposCPFESenhaEmBranco() {
-        String mensagemApresentada = new LoginTela(app)
+    @DisplayName("Realizar login com o campo Senha em branco.")
+    public void testRealizarLoginComOCampoSenhaEmBranco() {
+        String nãoLogadoBtnDesabilitado = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
+                .txtCpf("02971008312")
+                .btnAvancar()
+                .selecionarEmpresabem()
+                .btnEmpresaAvancar()
                 .botaoEntrarComErro()
-                .mensagem();
+                .informacaoCampoCPF();
 
-        Assertions.assertEquals("Usuário não encontrado ou senha incorreta.", mensagemApresentada);
+        Assertions.assertEquals("029.710.083-12", nãoLogadoBtnDesabilitado);
     }
 
     @Test
-    @DisplayName("Digitar letras ou caracteres especiais no campo CPF.")
-    public void testDgitarLetrasOuCaracteresEspeciaisNoCampoCPF() {
-        String mensagemApresentada = new LoginTela(app)
+    @DisplayName("Realizar login com a senha invalida.")
+    public void testRealizarLoginComASenhaInvalida() {
+        LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("./*a,´[#")
-                .textoCPF();
+                .txtCpf("02971008312")
+                .btnAvancar()
+                .selecionarEmpresabem()
+                .btnEmpresaAvancar()
+                .escreverSenha("SenhaInvalida123")
+                .botaoEntrarComErro();
 
-        Assertions.assertEquals("CPF", mensagemApresentada);
+        String mensagemProcessoFalhou = loginTela.mensagemProcessoFalhou();
+        String mensagemUsuarioOuSenhaIncorreto = loginTela.mensagemUsuarioOuSenhaIncorreto();
+
+        Assertions.assertEquals("O processo falhou.", mensagemProcessoFalhou);
+        Assertions.assertEquals("Usuário não encontrado ou senha incorreta.", mensagemUsuarioOuSenhaIncorreto);
     }
 
     @After

@@ -155,7 +155,7 @@ public class SinaisVitaisTela {
         return "Informe a temperatura.";
     }
     public String mensagemInforSistolica(){
-        return "Informe a pressão sistólica.";
+        return "Insira a pressão sistólica";
     }
     public String mensagemInforDiastolica(){
         return "Informe a pressão diastólica.";

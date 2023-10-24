@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import telas.LoginTela;
+import telas.BemVindoTela;
 import telas.SinaisVitaisTela;
 
 import java.util.concurrent.TimeUnit;
@@ -26,16 +26,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital de peso.")
     public void testRealizarOCadastroDeUmSinalVitalDePeso() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPesoInserir()
@@ -49,16 +47,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital peso em branco.")
     public void testRealizarOCadastroDeUmSinalVitalPesoEmBranco() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPesoInserir()
@@ -71,16 +67,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital peso com valor zero.")
     public void testRealizarOCadastroDeUmSinalVitalPesoComValorZero() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPesoInserir()
@@ -93,16 +87,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital peso com caracteres especiais.")
     public void testRealizarOCadastroDeUmSinalVitalPesoComCaracteresEspeciais() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPesoInserir()
@@ -116,16 +108,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital altura.")
     public void testRealizarOCadastroDeUmSinalVitalAltura() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnAlturaInserir()
@@ -139,16 +129,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital altura em branco.")
     public void testRealizarOCadastroDeUmSinalVitalAlturaEmBranco() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnAlturaInserir()
@@ -161,16 +149,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital altura com valor zero.")
     public void testRealizarOCadastroDeUmSinalVitalAlturaComValorZero() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnAlturaInserir()
@@ -183,16 +169,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital altura com caracteres especiais.")
     public void testRealizarOCadastroDeUmSinalVitalAlturaComCaracteresEspeciais() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnAlturaInserir()
@@ -205,16 +189,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Temperatura.")
     public void testRealizarOCadastroDeUmSinalVitalTemperatura() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnTemperaturaInserir()
@@ -228,16 +210,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Temperatura em branco.")
     public void testRealizarOCadastroDeUmSinalVitalTemperaturaEmBranco() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnTemperaturaInserir()
@@ -247,19 +227,18 @@ public class SinaisVitaisTest {
         Assertions.assertEquals(sinaisVitaisTela.mensagemInforTemperatura(),sinaisVitaisTela.btnGravarDesabilitadoTemperatura());
     }
 // O campo aceita zero no campo então esse testes não será utilizado.
-/*    @Test
+
+    @Test
     @DisplayName("Realizar o cadastro de um sinal vital Temperatura com valor zero.")
     public void testRealizarOCadastroDeUmSinalVitalTemperaturaComOValorZero() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnTemperaturaInserir()
@@ -269,21 +248,19 @@ public class SinaisVitaisTest {
 
 // Está sendo permitido digitar zero em temperatura.
         Assertions.assertEquals(sinaisVitaisTela.mensagemInforTemperatura(),sinaisVitaisTela.btnGravarDesabilitadoTemperatura());
-    }*/
+    }
 
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Temperatura com caracteres especiais.")
     public void testRealizarOCadastroDeUmSinalVitalTemperaturaComCaracteresEspeciais() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnTemperaturaInserir()
@@ -297,16 +274,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Pressão Sanguínea.")
     public void testRealizarOCadastroDeUmSinalVitalPressaoSanguinea() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPressaoSanguineaInserir()
@@ -321,16 +296,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Pressão Sanguínea o campo sistólica em branco.")
     public void testRealizarOCadastroDeUmSinalVitalPressaoSanguineaOCampoSistólicaEmBranco() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPressaoSanguineaInserir()
@@ -344,16 +317,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Pressão Sanguínea o campo diastólica em branco.")
     public void testRealizarOCadastroDeUmSinalVitalPressaoSanguineaOCampoDiastolicaEmBranco() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPressaoSanguineaInserir()
@@ -364,19 +335,17 @@ public class SinaisVitaisTest {
         Assertions.assertEquals(sinaisVitaisTela.mensagemInforDiastolica(),sinaisVitaisTela.btnGravarDesabilitadoPressaoSanguinea2());
     }
 
-/*    @Test
+    @Test
     @DisplayName("Teste para validar realizar o cadastro de Pressão Sanguínea com o valor Zero")
     public void testRealizarCadastroDePressaoSanguineaComOValorZero() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPressaoSanguineaInserir()
@@ -385,21 +354,19 @@ public class SinaisVitaisTest {
                 .btnPressaoSanguineaGravar();
 
         Assertions.assertEquals("Insira a pressão sistólica",sinaisVitaisTela.btnGravarDesabilitadoPressaoSanguinea());
-    }*/
+    }
 
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Pressão Sanguínea com caracteres especiais nos campos.")
     public void testRealizarOCadastroDeUmSinalVitalPressaoSanguineaComCaracteresEspeciaisNosCampos() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPressaoSanguineaInserir()
@@ -414,16 +381,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Pulso.")
     public void testRealizarOCadastroDeUmSinalVitalPulso() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPulsoInserir()
@@ -437,16 +402,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Pulso em branco.")
     public void testRealizarOCadastroDeUmSinalVitalPulsoEmBranco() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPulsoInserir()
@@ -459,16 +422,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Pulso com valor zero.")
     public void testRealizarOCadastroDeUmSinalVitalPulsoComOValorZero() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPulsoInserir()
@@ -481,16 +442,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Pulso com caracteres especiais.")
     public void testRealizarOCadastroDeSinalVitalPulsoComCaracteresEspeciais() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnPulsoInserir()
@@ -503,16 +462,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Glicemia.")
     public void testRealizarOCadastroDeUmSinalVitalGlicemia() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnGlicemiaInserir()
@@ -526,16 +483,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Glicemia em branco.")
     public void testRealizarOCadastroDeUmSinalVitalGlicemiaEmBranco() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnGlicemiaInserir()
@@ -545,41 +500,38 @@ public class SinaisVitaisTest {
         Assertions.assertEquals(sinaisVitaisTela.mensagemInforGlicemia(),sinaisVitaisTela.btnGravarDesabilitadoGlicemia());
     }
 // O campo aceita zero no campo então esse testes não será utilizado.
-/*    @Test
+
+    @Test
     @DisplayName("Realizar o cadastro de um sinal vital Glicemia com valor zero.")
     public void testRealizarOCadastroDeUmSinalVitalGlicemiaComValorZero() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnGlicemiaInserir()
                 .txtGlicemiaInserir("0")
                 .btnGlicemiaGravar();
-
+// está aceitando 0
         Assertions.assertEquals(sinaisVitaisTela.mensagemInforGlicemia(),sinaisVitaisTela.btnGravarDesabilitadoGlicemia());
-    }*/
+    }
 
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Glicemia com caracteres especiais.")
     public void testRealizarOCadastroDeUmSinalVitalGlicemiaComCaracteresEspeciais() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnGlicemiaInserir()
@@ -593,16 +545,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Saturação.")
     public void testRealizarOCadastroDeUmSinalVitalSaturacao() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnSaturacaoInserir()
@@ -616,16 +566,14 @@ public class SinaisVitaisTest {
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Saturação em branco.")
     public void testRealizarOCadastroDeUmSinalVitalSaturacaoEmBranco() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnSaturacaoInserir()
@@ -635,19 +583,18 @@ public class SinaisVitaisTest {
         Assertions.assertEquals(sinaisVitaisTela.mensagemInforSaturacao(),sinaisVitaisTela.btnGravarDesabilitadoSaturacao());
     }
 // O campo aceita zero no campo então esse testes não será utilizado.
-/*    @Test
+
+    @Test
     @DisplayName("Realizar o cadastro de um sinal vital Saturação com valor zero.")
     public void testRealizarOCadastroDeUmSinalVitalSaturacaoComValorZero() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnSaturacaoInserir()
@@ -655,21 +602,19 @@ public class SinaisVitaisTest {
                 .btnSaturacaoGravar();
 
         Assertions.assertEquals(sinaisVitaisTela.mensagemInforSaturacao(),sinaisVitaisTela.btnGravarDesabilitadoSaturacao());
-    }*/
+    }
 
     @Test
     @DisplayName("Realizar o cadastro de um sinal vital Saturação com caracteres especiais.")
     public void testRealizarOCadastroDeUmSinalVitalSaturacaoComCaracteresEspeciais() {
-        SinaisVitaisTela sinaisVitaisTela  = new LoginTela(app)
+        SinaisVitaisTela sinaisVitaisTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("02971008312")
+                .txtCpf("48135484070")
+                .btnAvancarSimples()
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
                 .botaoHome()
                 .btnSinaisVitais()
                 .btnSaturacaoInserir()

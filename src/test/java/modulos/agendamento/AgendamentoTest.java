@@ -6,7 +6,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import telas.AgendamentoTela;
+import telas.BemVindoTela;
 import telas.LoginTela;
+import telas.ReceitaTela;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,25 +27,25 @@ public class AgendamentoTest {
     @Test
     @DisplayName("Cadastrar uma alergia corretamente")
     public void testCadastrarUmExame(){
-        //String mensagemApresentada =
-         new LoginTela(app)
+        AgendamentoTela agendamentoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
-                .escreverCPF("03907590902")
+                .txtCpf("02971008312")
+                .btnAvancar()
+                .selecionarEmpresabem()
+                .btnEmpresaAvancar()
+                .escreverCPF("02971008312")
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
-                .scroll(0.5,0.90,0.5,0.04)
-                .selecionarEmpresa("DIMENSA S.A. 149")
-                .enviarEmpresa()
-                .botaoLocalizacao()
+                .botaoHome()
                 .botaoAgendamento()
-                .selecaoTipoAgendamento("VACINA")
+                .selecaoTipoAgendamento("CHECK-UP")
                 .botaoOk()
                 .botaoTitular()
                 .botaoAgendar()
                 .selecionarDataDisponivel()
-                 .botaoOk();
+                .botaoOk();
 
         // String validarExameCadastrado = alergiaTela.validarExameCadastrado();
         // String validarExameCadastrado2 = alergiaTela.validarExameCadastrado2();
