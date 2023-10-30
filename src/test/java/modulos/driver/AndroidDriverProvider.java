@@ -14,16 +14,13 @@ public class AndroidDriverProvider {
     }
 
     public static AndroidDriver getDriver() {
-       // if (driver == null) {
             createDriver();
-       // }
         return driver;
     }
 
     private static void createDriver() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("app","D:\\Prestação de serviço\\Atividades\\homolog-container\\1.1.35\\app-homol-login-new.apk");
-        //capabilities.setCapability("deviceName","emulator-5554");
         capabilities.setCapability("deviceName","ZF5245R8X4");
         capabilities.setCapability("platformName", "Android");
 

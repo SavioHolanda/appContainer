@@ -24,6 +24,8 @@ public class AgendamentoTela {
         for (WebElement element : elements) {
             if (element.getText().equals(tipoAgendamento)) {
                 element.click();
+            }else{
+
             }
         }
 
@@ -35,34 +37,31 @@ public class AgendamentoTela {
         return this;
     }
 
-/*    public AgendamentoTela botaoVoltar(){
-
-    }*/
-
-    public AgendamentoTela botaoTitular() {
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]")).click();
-        return this;
-    }
-
-    public AgendamentoTela botaoAgendar() {
+    public AgendamentoTela btnVoltar(){
         app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[3]")).click();
         return this;
     }
 
-    public AgendamentoTela selecionarDataDisponivel() {
-   /*     List<WebElement> elements = app.findElements(MobileBy.AndroidUIAutomator("new UiSelector().className(\"android.widget.TextView\")"));
-        for (WebElement element : elements) {
-            System.out.println(elements);
-            if (element.getText().equals("26")) {
-                element.click();
-            }
-        }*/
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[30]/android.view.ViewGroup")).click();
+    public String txtAgendamento() {
+        return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView[1]")).getText();
+    }
+
+    public String txtMeusAgendamentos(){
+        return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView")).getText();
+    }
+
+    public AgendamentoTela btnCancelar() {
+        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]")).click();
         return this;
     }
 
-    public AgendamentoTela botaoOK(){
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[37]")).click();
+    public AgendamentoTela selecionarDataDisponivel() {
+        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[41]/android.view.ViewGroup/android.widget.TextView")).click();
+        return this;
+    }
+
+    public AgendamentoTela botaoOKAgenda(){
+        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[43]")).click();
         return this;
     }
 
@@ -76,11 +75,40 @@ public class AgendamentoTela {
         return this;
     }
 
+    public AgendamentoTela naoConfirmarAgendamento(){
+        app.findElement(By.id("android:id/button1")).click();
+        return this;
+    }
+
     public String mensagemSucessoAgendamento(){
-         String mensagem = app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.TextView[1]")).getText();
-         String mensagem2 = app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.TextView[2]")).getText();
-         String mensagemFinal = mensagem+" "+mensagem2;
-         System.out.println(mensagemFinal);
-        return mensagemFinal;
+         return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.TextView[1]")).getText();
+    }
+
+    public String mensagemSucessoAgendamento2(){
+        return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.TextView[2]")).getText();
+    }
+
+    public String mensagemAtencao(){
+        return app.findElement(By.id("android:id/alertTitle")).getText();
+    }
+
+    public String mensagemTipoAgendamenot(){
+        return app.findElement(By.id("android:id/message")).getText();
+    }
+    public String txtselecioneDia(){
+        return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView")).getText();
+    }
+
+    public AgendamentoTela btnAgendaVoltar(){
+        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[42]")).click();
+        return this;
+    }
+
+    public String txtTipoAgendamento(){
+        return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView[2]")).getText();
+    }
+
+    public String txthoraAgendamento(){
+        return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.TextView")).getText();
     }
 }

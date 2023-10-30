@@ -44,4 +44,5 @@ public class BemVindoTela {
     public String mensagemCpfCampo(){
         return app.findElement(By.className("android.widget.EditText")).getText();
     }
+
 }
