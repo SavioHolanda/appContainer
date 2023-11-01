@@ -1,18 +1,24 @@
 package modulos.login;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.android.AndroidDriver;
 import modulos.driver.AndroidDriverProvider;
+import modulos.driver.TestBase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import telas.BemVindoTela;
+import telas.LoginTela;
 
 import java.util.concurrent.TimeUnit;
 
 public class BemVindoTest {
     private AndroidDriver app;
+    private ExtentReports extent = TestBase.getInstance();
+    private ExtentTest test;
 
     @Before
     @DisplayName("Metodo de abertura do driver")
@@ -22,38 +28,48 @@ public class BemVindoTest {
     }
 
     @Test
-    @DisplayName("Realizar o preenchimento do campo CPF com CPF cadastrado  em mais de uma entidade e clicar em avançar")
     public void testRealizarOPreenchimentoDoCampoCpfComCpfCadastradoEmMaisDeUmaEntidadeEClicarEmAvancar() {
-        String textoTelaLogin = new BemVindoTela(app)
+        test = extent.createTest("Realizar o preenchimento do campo CPF com CPF cadastrado  em mais de uma entidade e clicar em avançar");
+        LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
                 .txtCpf("02971008312")
                 .btnAvancar()
                 .selecionarEmpresabem()
-                .btnEmpresaAvancar()
-                .textoCPF();
+                .btnEmpresaAvancar();
 
-        Assertions.assertEquals("Entrar no Cuid@r ", textoTelaLogin);
+        if(loginTela.msnEntrarCuidar().equals(loginTela.textoCPF())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
+        Assertions.assertEquals(loginTela.msnEntrarCuidar(), loginTela.textoCPF());
     }
 
     @Test
-    @DisplayName("Realizar o preenchimento do campo CPF com CPF cadastrado em apenas uma entidade e clicar em avançar")
     public void testRealizarOPreenchimentoDoCampoCpfComCpfCadastradoEmApenasUmaEntidadeEClicarEmAvancar() {
-        String textoTelaLogin = new BemVindoTela(app)
+        test = extent.createTest("Realizar o preenchimento do campo CPF com CPF cadastrado em apenas uma entidade e clicar em avançar");
+        LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
                 .txtCpf("48135484070")
-                .btnAvancarSimples()
-                .textoCPF();
+                .btnAvancarSimples();
 
-        Assertions.assertEquals("Entrar no Cuid@r ", textoTelaLogin);
+        if(loginTela.msnEntrarCuidar().equals(loginTela.textoCPF())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
+        Assertions.assertEquals(loginTela.msnEntrarCuidar(), loginTela.textoCPF());
     }
 
     @Test
-    @DisplayName("Realizar o preenchimento do campo CPF com um Cpf não cadastrado e clicar em avançar")
     public void testRealizarOPreenchimentoDoCampoCpfComUmCpfNaoCadastradoEClicarEmAvancar() {
+        test = extent.createTest("Realizar o preenchimento do campo CPF com um Cpf não cadastrado e clicar em avançar");
         BemVindoTela bemVindoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -61,16 +77,19 @@ public class BemVindoTest {
                 .txtCpf("02971000000")
                 .btnAvancar();
 
-        String mensagemErro = bemVindoTela.mensagemErro();
-        String mensagemDadosNaoEncontrados = bemVindoTela.mensagemDadosNaoEncontrados();
+        if(bemVindoTela.msnErro().equals(bemVindoTela.mensagemErro()) && bemVindoTela.msnDadosNaoEncontrados().equals(bemVindoTela.mensagemDadosNaoEncontrados())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("Error", mensagemErro);
-        Assertions.assertEquals("Dados não encontrados", mensagemDadosNaoEncontrados);
+        Assertions.assertEquals(bemVindoTela.msnErro(), bemVindoTela.mensagemErro());
+        Assertions.assertEquals(bemVindoTela.msnDadosNaoEncontrados(), bemVindoTela.mensagemDadosNaoEncontrados());
     }
 
     @Test
-    @DisplayName("Realizar o não preenchimento do campo CPF e clicar em avançar")
     public void testRealizarONaoPreenchimentoDoCampoCpfEClicarEmAvancar() {
+        test = extent.createTest("Realizar o não preenchimento do campo CPF e clicar em avançar");
         BemVindoTela bemVindoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -78,14 +97,18 @@ public class BemVindoTest {
                 .txtCpf("")
                 .btnAvancar();
 
-        String mensagemCpfCampo = bemVindoTela.mensagemCpfCampo();
+        if(bemVindoTela.msnCpf().equals(bemVindoTela.mensagemCpfCampo())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("CPF", mensagemCpfCampo);
+        Assertions.assertEquals(bemVindoTela.msnCpf(), bemVindoTela.mensagemCpfCampo());
     }
 
     @Test
-    @DisplayName("Realizar o preenchimento do campo CPF com caracteres especiais e clicar em avançar")
     public void testRealizarONaoPreenchimentoDoCampoCpfComCaracteresEspeciaisEClicarEmAvancar() {
+        test = extent.createTest("Realizar o preenchimento do campo CPF com caracteres especiais e clicar em avançar");
         BemVindoTela bemVindoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -93,12 +116,19 @@ public class BemVindoTest {
                 .txtCpf(",.-")
                 .btnAvancar();
 
-        String mensagemCpfCampo = bemVindoTela.mensagemCpfCampo();
+        if(bemVindoTela.msnCpf().equals(bemVindoTela.mensagemCpfCampo())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("CPF", mensagemCpfCampo);
+        Assertions.assertEquals(bemVindoTela.msnCpf(), bemVindoTela.mensagemCpfCampo());
     }
+
+    // fazer os testes de primeiro acesso aqui.
     @After
     public void fecharDriver(){
         app.quit();
+        extent.flush();
     }
 }

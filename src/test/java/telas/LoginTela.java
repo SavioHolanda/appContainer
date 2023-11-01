@@ -177,10 +177,6 @@ public class LoginTela {
             app.findElement(By.id("android:id/button1")).click();
             return this;
         }
-        public HomeTela botaoProximo(){
-            app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]")).click();
-            return new HomeTela(app);
-        }
         public String mensagemProcessoFalhou(){
             return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.TextView[1]")).getText();
         }
@@ -189,5 +185,61 @@ public class LoginTela {
     }
 
         /**** Mensagens de retorno ****/
-
+        public String msnCpf(){
+            return "029.710.083-12";
+        }
+        public String msnProcessoFalhou(){
+            return "O processo falhou.";
+        }
+        public String msnSenhaIncorreta(){
+            return "Usuário não encontrado ou senha incorreta.";
+        }
+        public String msnSucesso(){
+            return "Sucesso";
+        }
+        public String msnRelatarProblemaSuceso(){
+            return "Recebemos sua notificação e entraremos em contato em breve. Nosso horário de atendimento é de segunda a sexta, das 9h às 19h.";
+        }
+        public String msnInforNome(){
+            return "Informe o seu nome";
+        }
+        public String msnInforTel(){
+            return "Informe o seu telefone";
+        }
+        public String msnInforProblema(){
+            return "Informe o problema";
+        }
+        public String msnTelCelular(){
+            return "Telefone Celular";
+        }
+        public String msnFaleGente(){
+            return "Fale com a gente";
+        }
+        public String msnEntrarCuidar(){
+            return "Entrar no Cuid@r ";
+        }
+        public String msnSucessoSenha(){
+            return "Sucesso!";
+        }
+        public String msnSenhaSucesso(){
+            return "Sua senha foi atualizada com sucesso!\n" +
+                    "\n" +
+                    "[ATENÇÃO] Você receberá uma Senha Provisória!\n" +
+                    "\n" +
+                    "O Envio da Senha Provisória é feita por: \n" +
+                    "- SMS (mensagem no seu celular)\n" +
+                    "- E-mail (seu e-mail cadastro no aplicativo";
+        }
+        public String msnAtencao(){
+            return "Atenção!";
+        }
+        public String msnUsuarioNaoEncontrado(){
+            return "Usuário não encontrado.";
+        }
+        public String msnCpfObrigatorio(){
+            return "CPF obrigatório";
+        }
+        public String msnCpfCompleto(){
+            return "Digite o CPF completo";
+        }
 }

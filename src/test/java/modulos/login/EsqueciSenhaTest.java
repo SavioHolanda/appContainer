@@ -1,7 +1,10 @@
 package modulos.login;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.android.AndroidDriver;
 import modulos.driver.AndroidDriverProvider;
+import modulos.driver.TestBase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +17,8 @@ import java.util.concurrent.TimeUnit;
 
 public class EsqueciSenhaTest {
     private AndroidDriver app;
+    private ExtentReports extent = TestBase.getInstance();
+    private ExtentTest test;
 
     @Before
     @DisplayName("Metodo de abertura do driver")
@@ -23,8 +28,8 @@ public class EsqueciSenhaTest {
     }
 
     @Test
-    @DisplayName("Digitar um CPF cadastrado no campo Digite seu CPF e envia-lo.")
     public void testDigitarUmCpfCadastradoNoCampoDigiteSeuCpfEEnvialo() {
+        test = extent.createTest("Digitar um CPF cadastrado no campo Digite seu CPF e envia-lo.");
         LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -34,22 +39,20 @@ public class EsqueciSenhaTest {
                 .esqueciSenha()
                 .esqueciSenhaCPF("30480525005")
                 .esqueciSenhaEnviar();
-        String mensagemSucesso = loginTela.mensagemSucesso();
-        String mensagemSenhaAlterada = loginTela.mensagemSenhaAlterada();
 
-        Assertions.assertEquals("Sucesso!", mensagemSucesso);
-        Assertions.assertEquals("Sua senha foi atualizada com sucesso!\n" +
-                "\n" +
-                "[ATENÇÃO] Você receberá uma Senha Provisória!\n" +
-                "\n" +
-                "O Envio da Senha Provisória é feita por: \n" +
-                "- SMS (mensagem no seu celular)\n" +
-                "- E-mail (seu e-mail cadastro no aplicativo", mensagemSenhaAlterada);
+        if(loginTela.msnSucessoSenha().equals(loginTela.mensagemSucesso()) && loginTela.msnSenhaSucesso().equals(loginTela.mensagemSenhaAlterada())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
+        Assertions.assertEquals(loginTela.msnSucessoSenha(), loginTela.mensagemSucesso());
+        Assertions.assertEquals(loginTela.msnSenhaSucesso(), loginTela.mensagemSenhaAlterada());
     }
 
     @Test
-    @DisplayName("Digitar um CPF não cadastrado no campo Digite seu CPF e envia-lo.")
     public void testDigitarUmCPFNaoCadastradoNoCampoDigiteSeuCPFEEnvialo() {
+        test = extent.createTest("Digitar um CPF não cadastrado no campo Digite seu CPF e envia-lo.");
         LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -60,17 +63,20 @@ public class EsqueciSenhaTest {
                 .esqueciSenhaCPF("12345217412")
                 .esqueciSenhaEnviar();
 
-        String mensagemAtencao = loginTela.mensagemAtencao();
-        String mensagemUsuarioNaoEncontrado = loginTela.mensagemUsuarioNaoEncontrado();
+        if(loginTela.msnAtencao().equals(loginTela.mensagemAtencao()) && loginTela.msnUsuarioNaoEncontrado().equals(loginTela.mensagemUsuarioNaoEncontrado())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("Atenção!", mensagemAtencao);
-        Assertions.assertEquals("Usuário não encontrado.", mensagemUsuarioNaoEncontrado);
+        Assertions.assertEquals(loginTela.msnAtencao(), loginTela.mensagemAtencao());
+        Assertions.assertEquals(loginTela.msnUsuarioNaoEncontrado(), loginTela.mensagemUsuarioNaoEncontrado());
     }
 
     @Test
-    @DisplayName("Digitar caracteres especiais no campo digite seu CPF.")
     public void testDigitarCaracteresEspeciaisNoCampoDigiteSeuCPF() {
-        String mensagemApresentada = new BemVindoTela(app)
+        test = extent.createTest("Digitar caracteres especiais no campo digite seu CPF.");
+        LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
@@ -78,16 +84,21 @@ public class EsqueciSenhaTest {
                 .btnAvancarSimples()
                 .esqueciSenha()
                 .esqueciSenhaCPF(",.-")
-                .esqueciSenhaEnviar()
-                .cpfObrigatorio();
+                .esqueciSenhaEnviar();
 
-        Assertions.assertEquals("CPF obrigatório", mensagemApresentada);
+        if(loginTela.msnCpfObrigatorio().equals(loginTela.cpfObrigatorio())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
+        Assertions.assertEquals(loginTela.msnCpfObrigatorio(), loginTela.cpfObrigatorio());
     }
 
     @Test
-    @DisplayName("Deixar o campo Digite seu CPF em branco.")
     public void testDeixaOCampoDigiteSeuCPFEmBranco() {
-        String mensagemCpfObrigatorio = new BemVindoTela(app)
+        test = extent.createTest("Deixar o campo Digite seu CPF em branco.");
+        LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
@@ -95,16 +106,21 @@ public class EsqueciSenhaTest {
                 .btnAvancarSimples()
                 .esqueciSenha()
                 .esqueciSenhaCPF("")
-                .esqueciSenhaEnviar()
-                .cpfObrigatorio();
+                .esqueciSenhaEnviar();
 
-        Assertions.assertEquals("CPF obrigatório", mensagemCpfObrigatorio);
+        if(loginTela.msnCpfObrigatorio().equals(loginTela.cpfObrigatorio())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
+        Assertions.assertEquals(loginTela.msnCpfObrigatorio(), loginTela.cpfObrigatorio());
     }
 
     @Test
-    @DisplayName("Digitar um CPF incompleto no campo Digite seu CPF.")
     public void testDigitarUmCPFIncompletoNoCampoDigiteSeuCPF() {
-        String mensagemCpfCompleto = new BemVindoTela(app)
+        test = extent.createTest("Digitar um CPF incompleto no campo Digite seu CPF.");
+        LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
@@ -112,14 +128,20 @@ public class EsqueciSenhaTest {
                 .btnAvancarSimples()
                 .esqueciSenha()
                 .esqueciSenhaCPF("123")
-                .esqueciSenhaEnviar()
-                .cpfCompleto();
+                .esqueciSenhaEnviar();
 
-        Assertions.assertEquals("Digite o CPF completo", mensagemCpfCompleto);
+        if(loginTela.msnCpfCompleto().equals(loginTela.cpfCompleto())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
+        Assertions.assertEquals(loginTela.msnCpfCompleto(), loginTela.cpfCompleto());
     }
 
     @After
     public void fecharDriver(){
         app.quit();
+        extent.flush();
     }
 }

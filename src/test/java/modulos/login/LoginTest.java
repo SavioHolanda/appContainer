@@ -1,7 +1,7 @@
 package modulos.login;
 
-import com.aventstack.extentreports.Status;
-import com.sun.org.apache.xpath.internal.operations.Equals;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.android.AndroidDriver;
 import modulos.driver.AndroidDriverProvider;
 import modulos.driver.TestBase;
@@ -16,8 +16,10 @@ import telas.LoginTela;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginTest extends TestBase {
+public class LoginTest {
     private AndroidDriver app;
+    private ExtentReports extent = TestBase.getInstance();
+    private ExtentTest test;
 
     @Before
     @DisplayName("Metodo de abertura do driver")
@@ -27,7 +29,6 @@ public class LoginTest extends TestBase {
     }
 
     @Test
-    @DisplayName("Realizar login com sucesso com um usuário cadastrado em apenas uma entidade.")
     public void testRealizarLoginComSucessoComUmUsuarioCadastradoEmApenasUmaEntidade() {
         test = extent.createTest("Realizar login com sucesso com um usuário cadastrado em apenas uma entidade.");
         HomeTela homeTela = new BemVindoTela(app)
@@ -40,13 +41,16 @@ public class LoginTest extends TestBase {
                 .botaoEntrar()
                 .botaoHome();
 
-        Assertions.assertEquals(homeTela.txtRetorno(), homeTela.validarAcesso());
+        if(homeTela.txtRetorno().equals(homeTela.validarAcesso())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-            test.log(Status.PASS, "Teste aprovado");
+        Assertions.assertEquals(homeTela.txtRetorno(), homeTela.validarAcesso());
     }
 
     @Test
-    @DisplayName("Realizar login com sucesso com um usuário cadastrado em mais de uma entidade")
     public void testRealizarLoginComSucessoComUmUsuarioCadastroEmMaisDeUmaEntidade() {
         test = extent.createTest("Realizar login com sucesso com um usuário cadastrado em mais de uma entidade");
         HomeTela homeTela = new BemVindoTela(app)
@@ -62,16 +66,19 @@ public class LoginTest extends TestBase {
                 .botaoEntrar()
                 .botaoHome();
 
-        Assertions.assertEquals(homeTela.txtRetorno(), homeTela.validarAcesso());
+        if(homeTela.txtRetorno().equals(homeTela.validarAcesso())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-            test.log(Status.PASS, "Teste aprovado");
+        Assertions.assertEquals(homeTela.txtRetorno(), homeTela.validarAcesso());
     }
 
     @Test
-    @DisplayName("Realizar login alterando o CPF do campo CPF.")
     public void testRealizarLoginAlterandoOCPFDoCampoCPF() {
         test = extent.createTest("Realizar login alterando o CPF do campo CPF.");
-        String informacaoCampoCPF = new BemVindoTela(app)
+        LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
@@ -79,20 +86,22 @@ public class LoginTest extends TestBase {
                 .btnAvancar()
                 .selecionarEmpresabem()
                 .btnEmpresaAvancar()
-                .escreverCPF("76549427029")
-                .informacaoCampoCPF();
+                .escreverCPF("76549427029");
 
-        Assertions.assertEquals("029.710.083-12", informacaoCampoCPF);
+        if(loginTela.msnCpf().equals(loginTela.informacaoCampoCPF())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-            test.log(Status.PASS, "Teste aprovado");
+        Assertions.assertEquals(loginTela.msnCpf(), loginTela.informacaoCampoCPF());
 
     }
 
     @Test
-    @DisplayName("Realizar login com o campo Senha em branco.")
     public void testRealizarLoginComOCampoSenhaEmBranco() {
         test = extent.createTest("Realizar login com o campo Senha em branco.");
-        String nãoLogadoBtnDesabilitado = new BemVindoTela(app)
+        LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
@@ -100,16 +109,18 @@ public class LoginTest extends TestBase {
                 .btnAvancar()
                 .selecionarEmpresabem()
                 .btnEmpresaAvancar()
-                .botaoEntrarComErro()
-                .informacaoCampoCPF();
+                .botaoEntrarComErro();
 
-        Assertions.assertEquals("029.710.083-12", nãoLogadoBtnDesabilitado);
+        if(loginTela.msnCpf().equals(loginTela.informacaoCampoCPF())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-            test.log(Status.PASS, "Teste aprovado");
+        Assertions.assertEquals(loginTela.msnCpf(), loginTela.informacaoCampoCPF());
     }
 
     @Test
-    @DisplayName("Realizar login com a senha invalida.")
     public void testRealizarLoginComASenhaInvalida() {
         test = extent.createTest("Realizar login com a senha invalida.");
         LoginTela loginTela = new BemVindoTela(app)
@@ -123,18 +134,19 @@ public class LoginTest extends TestBase {
                 .escreverSenha("SenhaInvalida123")
                 .botaoEntrarComErro();
 
-        String mensagemProcessoFalhou = loginTela.mensagemProcessoFalhou();
-        String mensagemUsuarioOuSenhaIncorreto = loginTela.mensagemUsuarioOuSenhaIncorreto();
+        if(loginTela.msnProcessoFalhou().equals(loginTela.mensagemProcessoFalhou()) && loginTela.msnSenhaIncorreta().equals(loginTela.mensagemUsuarioOuSenhaIncorreto())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("O processo falhou.", mensagemProcessoFalhou);
-        Assertions.assertEquals("Usuário não encontrado ou senha incorreta.", mensagemUsuarioOuSenhaIncorreto);
-
-            test.log(Status.PASS, "Teste aprovado");
-
+        Assertions.assertEquals(loginTela.msnProcessoFalhou(), loginTela.mensagemProcessoFalhou());
+        Assertions.assertEquals(loginTela.msnSenhaIncorreta(), loginTela.mensagemUsuarioOuSenhaIncorreto());
     }
 
     @After
     public void fecharDriver(){
         app.quit();
+        extent.flush();
     }
 }

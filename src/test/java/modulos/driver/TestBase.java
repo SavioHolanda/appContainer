@@ -1,26 +1,23 @@
 package modulos.driver;
 import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class TestBase {
-    protected static ExtentReports extent;
-    protected ExtentTest test;
-
-    @BeforeClass
-    public static void setExtent() {
-        extent = new ExtentReports();
-        ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter("report.html");
-        extent.setSystemInfo("Host Name", "Sávio Dell");
-        extent.setSystemInfo("User Name", "Automação Mobile APP");
-        extent.setSystemInfo("Enviroment", "QA");
-        extent.attachReporter(htmlReporter);
-    }
-
-    @AfterClass
-    public static void tearDown() {
-        extent.flush();
+    private static ExtentReports extent;
+    public static ExtentReports getInstance() {
+        if (extent == null) {
+            extent = new ExtentReports();
+            ExtentSparkReporter sparkReporter = new ExtentSparkReporter("extent-report.html");
+            sparkReporter.config().setDocumentTitle("NHG APP");
+            sparkReporter.config().setEncoding("utf-8");
+            sparkReporter.config().setJS("js-string");
+            sparkReporter.config().setReportName("NHG APP");
+            sparkReporter.config().setTheme(Theme.DARK);
+            sparkReporter.config().setTimeStampFormat("dd MMM yyyy HH:mm:ss");
+            extent.setSystemInfo("Home", "Office");
+            extent.attachReporter(sparkReporter);
+        }
+        return extent;
     }
 }

@@ -1,7 +1,10 @@
 package modulos.login;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.android.AndroidDriver;
 import modulos.driver.AndroidDriverProvider;
+import modulos.driver.TestBase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +17,8 @@ import java.util.concurrent.TimeUnit;
 
 public class RelatarProblemaTest {
     private AndroidDriver app;
+    private ExtentReports extent = TestBase.getInstance();
+    private ExtentTest test;
 
     @Before
     @DisplayName("Metodo de abertura do driver")
@@ -22,8 +27,8 @@ public class RelatarProblemaTest {
         this.app.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
     @Test
-    @DisplayName("Relatar um problema técnico corretamente preenchendo os campos Nome, Telefone, Mensagem e Enviando.")
     public void testRelatarUmProblemaTecnicoCorretamentePreenchendoOsCampoNomeTelefoneMensagemEEnviando() {
+        test = extent.createTest("Relatar um problema técnico corretamente preenchendo os campos Nome, Telefone, Mensagem e Enviando.");
         LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -36,15 +41,18 @@ public class RelatarProblemaTest {
                 .digitarMensagemRelatarProblema("Mensagem testes para enviar um problema a ser reportado.")
                 .botaoEnviarRelatarProblema();
 
-        String mensagemSucessoRelatarproblema1 = loginTela.mensagemSucessoRelatarproblema1();
-        String mensagemSucessoRelatarproblema2 = loginTela.mensagemSucessoRelatarproblema2();
+        if(loginTela.msnSucesso().equals(loginTela.mensagemSucessoRelatarproblema1()) && loginTela.msnRelatarProblemaSuceso().equals(loginTela.mensagemSucessoRelatarproblema2())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("Sucesso", mensagemSucessoRelatarproblema1);
-        Assertions.assertEquals("Recebemos sua notificação e entraremos em contato em breve. Nosso horário de atendimento é de segunda a sexta, das 9h às 19h.", mensagemSucessoRelatarproblema2);
+        Assertions.assertEquals(loginTela.msnSucesso(), loginTela.mensagemSucessoRelatarproblema1());
+        Assertions.assertEquals(loginTela.msnRelatarProblemaSuceso(), loginTela.mensagemSucessoRelatarproblema2());
     }
     @Test
-    @DisplayName("Relatar um problema técnico invalido não preenchendo os campos Nome, Telefone, Mensagem e Enviando.")
     public void testRelatarUmProblemaTecnicoInvalidoNaoPreenchendoOsCamposNomeTelefoneMensagemEEnviando() {
+        test = extent.createTest("Relatar um problema técnico invalido não preenchendo os campos Nome, Telefone, Mensagem e Enviando.");
         LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -54,17 +62,19 @@ public class RelatarProblemaTest {
                 .faleComAGente()
                 .botaoEnviarRelatarProblema();
 
-        String mensagemNomeObrigatorio = loginTela.mensagemNomeObrigatorio();
-        String mensagemTelefoneObrigatorio = loginTela.mensagemTelefoneObrigatorio();
-        String mensagemObrigatorio = loginTela.mensagemObrigatorio();
+        if(loginTela.msnInforNome().equals(loginTela.mensagemNomeObrigatorio()) && loginTela.msnInforTel().equals(loginTela.mensagemTelefoneObrigatorio()) && loginTela.msnInforProblema().equals(loginTela.mensagemObrigatorio())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("Informe o seu nome", mensagemNomeObrigatorio);
-        Assertions.assertEquals("Informe o seu telefone", mensagemTelefoneObrigatorio);
-        Assertions.assertEquals("Informe o problema", mensagemObrigatorio);
+        Assertions.assertEquals(loginTela.msnInforNome(), loginTela.mensagemNomeObrigatorio());
+        Assertions.assertEquals(loginTela.msnInforTel(), loginTela.mensagemTelefoneObrigatorio());
+        Assertions.assertEquals(loginTela.msnInforProblema(), loginTela.mensagemObrigatorio());
     }
     @Test
-    @DisplayName("Relatar um problema com caracteres especiais ou letras no campo Telefone.")
     public void testRelatarUmProblemaComCaracteresEspeciaisOuLetrasNoCampoTelefone() {
+        test = extent.createTest("Relatar um problema com caracteres especiais ou letras no campo Telefone.");
         LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -75,28 +85,38 @@ public class RelatarProblemaTest {
                 .digitarTelefoneRelatarProblema("%./@!test,")
                 .botaoEnviarRelatarProblema();
 
-        String mensagemTelefoneObrigatorio = loginTela.telefoneMensagem();
+        if(loginTela.msnTelCelular().equals(loginTela.telefoneMensagem())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("Telefone Celular", mensagemTelefoneObrigatorio);
+        Assertions.assertEquals(loginTela.msnTelCelular(), loginTela.telefoneMensagem());
     }
     @Test
-    @DisplayName("Clicar na funcionalidade botão cancelar.")
     public void testClicarNaFuncionalidadeBotaoCancelar() {
-        String textoRelatarproblema = new BemVindoTela(app)
+        test = extent.createTest("Clicar na funcionalidade botão cancelar.");
+        LoginTela loginTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
                 .botaoAvancar()
                 .txtCpf("48135484070")
                 .btnAvancarSimples()
                 .faleComAGente()
-                .botaoCancelarRelatarProblema()
-                .textoFaleComAGente();
+                .botaoCancelarRelatarProblema();
 
-        Assertions.assertEquals("Fale com a gente", textoRelatarproblema);
+        if(loginTela.msnFaleGente().equals(loginTela.textoFaleComAGente())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
+        Assertions.assertEquals(loginTela.msnFaleGente(), loginTela.textoFaleComAGente());
     }
 
     @After
     public void fecharDriver(){
         app.quit();
+        extent.flush();
     }
 }

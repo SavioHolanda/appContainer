@@ -45,4 +45,16 @@ public class BemVindoTela {
         return app.findElement(By.className("android.widget.EditText")).getText();
     }
 
+    /**** Mensagens ***/
+
+    public String msnErro(){
+        return "Error";
+    }
+    public String msnDadosNaoEncontrados(){
+        return "Dados não encontrados";
+    }
+    public String msnCpf(){
+        return "CPF";
+    }
+
 }
