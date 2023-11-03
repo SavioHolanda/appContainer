@@ -1,7 +1,10 @@
 package modulos.agendamento;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.android.AndroidDriver;
 import modulos.driver.AndroidDriverProvider;
+import modulos.driver.TestBase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +18,8 @@ import java.util.concurrent.TimeUnit;
 public class AgendamentoTest {
 
     private AndroidDriver app;
+    private ExtentReports extent = TestBase.getInstance();
+    private ExtentTest test;
 
     @Before
     @DisplayName("Metodo de abertura do driver")
@@ -24,8 +29,8 @@ public class AgendamentoTest {
     }
 
     @Test
-    @DisplayName("Realizar a criação de um agendamento para titular.")
     public void testRealizarACriacaoDeUmAgendamentoParaTitular(){
+        test = extent.createTest("Realizar a criação de um agendamento para titular.");
         AgendamentoTela agendamentoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -43,16 +48,19 @@ public class AgendamentoTest {
                 .selecionarHora()
                 .confirmarAgendamento();
 
-         String mensagemSucessoAgendamento = agendamentoTela.mensagemSucessoAgendamento();
-         String mensagemSucessoAgendamento2 = agendamentoTela.mensagemSucessoAgendamento2();
+        if(agendamentoTela.alertaSucesso().equals(agendamentoTela.mensagemSucessoAgendamento()) && agendamentoTela.msnSucesso().equals(agendamentoTela.mensagemSucessoAgendamento2()) ){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-         Assertions.assertEquals("Sucesso", mensagemSucessoAgendamento);
-         Assertions.assertEquals("Agendamento realizado com sucesso!", mensagemSucessoAgendamento2);
+         Assertions.assertEquals(agendamentoTela.alertaSucesso(), agendamentoTela.mensagemSucessoAgendamento());
+         Assertions.assertEquals(agendamentoTela.msnSucesso(), agendamentoTela.mensagemSucessoAgendamento2());
     }
 
     @Test
-    @DisplayName("Realizar a criação de um reagendamento para titular com data e hora disponíveis.")
     public void testRealizarACriacaoDeUmReagendamentoParaTitularComDataEHoraDisponiveis(){
+        test = extent.createTest("Realizar a criação de um reagendamento para titular com data e hora disponíveis.");
         AgendamentoTela agendamentoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -70,16 +78,19 @@ public class AgendamentoTest {
                 .selecionarHora()
                 .confirmarAgendamento();
 
-        String mensagemSucessoAgendamento = agendamentoTela.mensagemSucessoAgendamento();
-        String mensagemSucessoAgendamento2 = agendamentoTela.mensagemSucessoAgendamento2();
+        if(agendamentoTela.alertaSucesso().equals(agendamentoTela.mensagemSucessoAgendamento()) && agendamentoTela.msnSucesso().equals(agendamentoTela.mensagemSucessoAgendamento2()) ){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("Sucesso", mensagemSucessoAgendamento);
-        Assertions.assertEquals("Agendamento realizado com sucesso!", mensagemSucessoAgendamento2);
+        Assertions.assertEquals(agendamentoTela.alertaSucesso(), agendamentoTela.mensagemSucessoAgendamento());
+        Assertions.assertEquals(agendamentoTela.msnSucesso(), agendamentoTela.mensagemSucessoAgendamento2());
     }
 
     @Test
-    @DisplayName("Realizar um agendamento sem seleciona o tipo.")
     public void testRealizarUmAgendamentoSemSelecionarOTipo(){
+        test = extent.createTest("Realizar um agendamento sem seleciona o tipo.");
         AgendamentoTela agendamentoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -92,16 +103,19 @@ public class AgendamentoTest {
                 .botaoAgendamento()
                 .botaoOk();
 
-        String mensagemAtencao = agendamentoTela.mensagemAtencao();
-        String mensagemTipoAgendamenot = agendamentoTela.mensagemTipoAgendamenot();
+        if(agendamentoTela.alertaAtencao().equals(agendamentoTela.mensagemAtencao()) && agendamentoTela.msnAtencao().equals(agendamentoTela.mensagemTipoAgendamento()) ){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("Atenção", mensagemAtencao);
-        Assertions.assertEquals("Selecione o tipo de agendamento", mensagemTipoAgendamenot);
+        Assertions.assertEquals(agendamentoTela.alertaAtencao(), agendamentoTela.mensagemAtencao());
+        Assertions.assertEquals(agendamentoTela.msnAtencao(), agendamentoTela.mensagemTipoAgendamento());
     }
 
     @Test
-    @DisplayName("Realizar o clique na funcionalidade do botão Cancelar na tela de agendamento.")
     public void testRealizarOCliqueNaFuncionalidadeDoBotaoCancelarNaTelaDeAgendamento(){
+        test = extent.createTest("Realizar o clique na funcionalidade do botão Cancelar na tela de agendamento.");
         AgendamentoTela agendamentoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -115,14 +129,18 @@ public class AgendamentoTest {
                 .selecaoTipoAgendamento("")
                 .btnCancelar();
 
-        String txtAgendamento = agendamentoTela.txtAgendamento();
+        if(agendamentoTela.msnAgendamento().equals(agendamentoTela.txtAgendamento())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("Agendamento", txtAgendamento);
+        Assertions.assertEquals(agendamentoTela.msnAgendamento(), agendamentoTela.txtAgendamento());
     }
 
     @Test
-    @DisplayName("Realizar o clique na funcionalidade do botão Voltar na tela de agendamento.")
     public void testRealizarOCliqueNaFuncionalidadeDoBotaoVoltarNaTelaDeAgendamento(){
+        test = extent.createTest("Realizar o clique na funcionalidade do botão Voltar na tela de agendamento.");
         AgendamentoTela agendamentoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -135,14 +153,18 @@ public class AgendamentoTest {
                 .botaoAgendamento()
                 .btnVoltar();
 
-        String txtMeusAgendamentos = agendamentoTela.txtMeusAgendamentos();
+        if(agendamentoTela.msnMeusAgendamentos().equals(agendamentoTela.txtMeusAgendamentos())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("Meus Agendamento", txtMeusAgendamentos);
+        Assertions.assertEquals(agendamentoTela.msnMeusAgendamentos(), agendamentoTela.txtMeusAgendamentos());
     }
 
     @Test
-    @DisplayName("Realizar agendamento sem selecionar um dia disponível.")
     public void testRealizarAgendamentoSemSelecionarUmDiaDisponivel(){
+        test = extent.createTest("Realizar agendamento sem selecionar um dia disponível.");
         AgendamentoTela agendamentoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -157,14 +179,18 @@ public class AgendamentoTest {
                 .botaoOk()
                 .botaoOKAgenda();
 
-        String txtselecioneDia = agendamentoTela.txtselecioneDia();
+        if(agendamentoTela.msnSelecioneDia().equals(agendamentoTela.txtselecioneDia())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("Selecione o dia", txtselecioneDia);
+        Assertions.assertEquals(agendamentoTela.msnSelecioneDia(), agendamentoTela.txtselecioneDia());
     }
 
     @Test
-    @DisplayName("Realizar agendamento na tela de selecionar o dia clique o botão VOLTAR.")
     public void testRealizarAgendamentoNaTelaDeSelecionarODiaCliqueOBotaoVoltar(){
+        test = extent.createTest("Realizar agendamento na tela de selecionar o dia clique o botão VOLTAR.");
         AgendamentoTela agendamentoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -179,14 +205,18 @@ public class AgendamentoTest {
                 .botaoOk()
                 .btnAgendaVoltar();
 
-        String txtTipoAgendamento = agendamentoTela.txtTipoAgendamento();
+        if(agendamentoTela.msnSelecioneTipoAgendamento().equals(agendamentoTela.txtTipoAgendamento())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("Selecione o tipo de agendamento", txtTipoAgendamento);
+        Assertions.assertEquals(agendamentoTela.msnSelecioneTipoAgendamento(), agendamentoTela.txtTipoAgendamento());
     }
 
     @Test
-    @DisplayName("Realizar agendamento selecionando um horário disponível e na confirmação do agendamento clicar em Não.")
     public void testRealizarAgendamentoSelecionandoUmHorarioDisponivelENaConfirmacaoDoAgendamentoClicarEmNao(){
+        test = extent.createTest("Realizar agendamento selecionando um horário disponível e na confirmação do agendamento clicar em Não.");
         AgendamentoTela agendamentoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -204,9 +234,13 @@ public class AgendamentoTest {
                 .selecionarHora()
                 .naoConfirmarAgendamento();
 
-        String txthoraAgendamento = agendamentoTela.txthoraAgendamento();
+        if(agendamentoTela.msnAgendamento().equals(agendamentoTela.txthoraAgendamento())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals("Agendamento", txthoraAgendamento);
+        Assertions.assertEquals(agendamentoTela.msnAgendamento(), agendamentoTela.txthoraAgendamento());
     }
 
     @After

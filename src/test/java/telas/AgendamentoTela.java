@@ -14,10 +14,6 @@ public class AgendamentoTela {
         this.app = app;
     }
 
- /*   public AgendamentoTela botaoMeusAgendamentos(){
-        return this;
-    }*/
-
     public AgendamentoTela selecaoTipoAgendamento(String tipoAgendamento) {
         app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup")).click();
         List<WebElement> elements = app.findElements(MobileBy.AndroidUIAutomator("new UiSelector().className(\"android.widget.TextView\")"));
@@ -92,7 +88,7 @@ public class AgendamentoTela {
         return app.findElement(By.id("android:id/alertTitle")).getText();
     }
 
-    public String mensagemTipoAgendamenot(){
+    public String mensagemTipoAgendamento(){
         return app.findElement(By.id("android:id/message")).getText();
     }
     public String txtselecioneDia(){
@@ -110,5 +106,31 @@ public class AgendamentoTela {
 
     public String txthoraAgendamento(){
         return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.TextView")).getText();
+    }
+
+    /*** Mensagens de retorno ***/
+    public String alertaSucesso(){
+        return "Sucesso";
+    }
+    public String msnSucesso(){
+        return "Agendamento realizado com sucesso!";
+    }
+    public String alertaAtencao(){
+        return "Atenção";
+    }
+    public String msnAtencao(){
+        return "Selecione o tipo de agendamento";
+    }
+    public String msnAgendamento(){
+        return "Agendamento";
+    }
+    public String msnMeusAgendamentos(){
+        return "Meus Agendamento";
+    }
+    public String msnSelecioneDia(){
+        return "Selecione o dia";
+    }
+    public String msnSelecioneTipoAgendamento(){
+        return "Selecione o tipo de agendamento";
     }
 }

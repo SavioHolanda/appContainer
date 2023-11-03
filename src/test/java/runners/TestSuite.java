@@ -1,5 +1,6 @@
 package runners;
 
+import modulos.agendamento.AgendamentoTest;
 import modulos.login.BemVindoTest;
 import modulos.login.EsqueciSenhaTest;
 import modulos.login.LoginTest;
@@ -9,6 +10,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+        AgendamentoTest.class,
         LoginTest.class,
         RelatarProblemaTest.class,
         BemVindoTest.class,

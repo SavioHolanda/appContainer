@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import telas.BemVindoTela;
+import telas.FormPrimeiroAcessoTela;
 import telas.LoginTela;
 
 import java.util.concurrent.TimeUnit;
@@ -124,8 +125,28 @@ public class BemVindoTest {
 
         Assertions.assertEquals(bemVindoTela.msnCpf(), bemVindoTela.mensagemCpfCampo());
     }
+    @Test
+    public void testRealizarOPreenchimentoDoCampoCPFComUmCPFCadastradoEAceitarODocumentoDePrivacidade(){
+        test = extent.createTest("Realizar o preenchimento do campo CPF com um CPF cadastrado e aceitar o documento de privacidade.");
+        FormPrimeiroAcessoTela formPrimeiroAcessoTela = new BemVindoTela(app)
+                .limparPrimeiroAcesso()
+                .botaoAvancar()
+                .botaoAvancar()
+                .botaoAvancar()
+                .txtCpf("75598710030")
+                .btnAvancar()
+                .FormPrimeiroAcessoTela()
+                .btnAceiteDoc();
 
-    // fazer os testes de primeiro acesso aqui.
+        if(formPrimeiroAcessoTela.txtalertaSucessoAceite().equals(formPrimeiroAcessoTela.alertaSucessoAceite()) && formPrimeiroAcessoTela.txtmsnSucessoAceite().equals(formPrimeiroAcessoTela.msnSucessoAceite())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
+        Assertions.assertEquals(formPrimeiroAcessoTela.txtalertaSucessoAceite(),formPrimeiroAcessoTela.alertaSucessoAceite());
+        Assertions.assertEquals(formPrimeiroAcessoTela.txtmsnSucessoAceite(),formPrimeiroAcessoTela.msnSucessoAceite());
+    }
     @After
     public void fecharDriver(){
         app.quit();
