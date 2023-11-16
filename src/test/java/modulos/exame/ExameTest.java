@@ -1,7 +1,10 @@
 package modulos.exame;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.android.AndroidDriver;
-import modulos.driver.AndroidDriverProvider;
+import driver.AndroidDriverProvider;
+import driver.TestBase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +18,8 @@ import java.util.concurrent.TimeUnit;
 public class ExameTest {
 
     private AndroidDriver app;
+    private ExtentReports extent = TestBase.getInstance();
+    private ExtentTest test;
 
     @Before
     @DisplayName("Metodo de abertura do driver")
@@ -24,8 +29,8 @@ public class ExameTest {
     }
 
     @Test
-    @DisplayName("Realizar o cadastro de um exame selecionando uma categoria e anexando uma imagem da galeria de imagens e salvar.")
     public void testRealizarOCadastroDeUmExameSelecionandoUmaCategoriaEAnexoUmaImagemDaGaleriaDeImagensESalvar(){
+        test = extent.createTest("Realizar o cadastro de um exame selecionando uma categoria e anexando uma imagem da galeria de imagens e salvar.");
         ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -44,15 +49,18 @@ public class ExameTest {
                 .botaoGaleria() //aqui
                 .botaoSalvar();
 
-        String validarExameCadastrado = exameTela.validarExameCadastrado();
-        String validarExameCadastrado2 = exameTela.validarExameCadastrado2();
+        if(exameTela.mensagemTudoCerto().equals(exameTela.validarExameCadastrado()) && exameTela.mensagemSucesso().equals(exameTela.validarExameCadastrado2())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals(exameTela.mensagemTudoCerto(), validarExameCadastrado);
-        Assertions.assertEquals(exameTela.mensagemSucesso(), validarExameCadastrado2);
+        Assertions.assertEquals(exameTela.mensagemTudoCerto(), exameTela.validarExameCadastrado());
+        Assertions.assertEquals(exameTela.mensagemSucesso(), exameTela.validarExameCadastrado2());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um exame selecionando uma categoria e anexando uma foto da câmera e salvar.")
     public void testRealizarOCadastroDeUmExameSelecionandoUmaCategoriaEAnexandoUmaFotoDaCameraESalvar(){
+        test = extent.createTest("Realizar o cadastro de um exame selecionando uma categoria e anexando uma foto da câmera e salvar.");
         ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -71,15 +79,18 @@ public class ExameTest {
                 .botaoCamera()
                 .botaoSalvar();
 
-        String validarExameCadastrado = exameTela.validarExameCadastrado();
-        String validarExameCadastrado2 = exameTela.validarExameCadastrado2();
+        if(exameTela.mensagemTudoCerto().equals(exameTela.validarExameCadastrado()) && exameTela.mensagemSucesso().equals(exameTela.validarExameCadastrado2())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals(exameTela.mensagemTudoCerto(), validarExameCadastrado);
-        Assertions.assertEquals(exameTela.mensagemSucesso(), validarExameCadastrado2);
+        Assertions.assertEquals(exameTela.mensagemTudoCerto(), exameTela.validarExameCadastrado());
+        Assertions.assertEquals(exameTela.mensagemSucesso(), exameTela.validarExameCadastrado2());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um exame selecionando uma categoria e anexando um documento e salvar.")
     public void testRealizarOCadastroDeUmExameSelecionandoUmaCategoriaEAnexandoUmDocumentoESalvar(){
+        test = extent.createTest("Realizar o cadastro de um exame selecionando uma categoria e anexando um documento e salvar.");
         ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -98,15 +109,18 @@ public class ExameTest {
                 .botaoDocumento()
                 .botaoSalvar();
 
-        String validarExameCadastrado = exameTela.validarExameCadastrado();
-        String validarExameCadastrado2 = exameTela.validarExameCadastrado2();
+        if(exameTela.mensagemTudoCerto().equals(exameTela.validarExameCadastrado()) && exameTela.mensagemSucesso().equals(exameTela.validarExameCadastrado2())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals(exameTela.mensagemTudoCerto(), validarExameCadastrado);
-        Assertions.assertEquals(exameTela.mensagemSucesso(), validarExameCadastrado2);
+        Assertions.assertEquals(exameTela.mensagemTudoCerto(), exameTela.validarExameCadastrado());
+        Assertions.assertEquals(exameTela.mensagemSucesso(), exameTela.validarExameCadastrado2());
     }
     @Test
-    @DisplayName("Realizar a exclusão de um exame cadastrado.")
     public void testRealizarAExclusaoDeUmExameCadastrado(){
+        test = extent.createTest("Realizar a exclusão de um exame cadastrado.");
         ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -121,15 +135,18 @@ public class ExameTest {
                 .botaoAcessoFotoEVideos()
                 .excluirExame();
 
-        String validarExameExcluido = exameTela.validarExameExcluido();
-        String validarExameExcluido2 = exameTela.validarExameExcluido2();
+        if(exameTela.mensagemTudoCerto().equals(exameTela.validarExameExcluido()) && exameTela.mensagemExcluido().equals(exameTela.validarExameExcluido2())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals(exameTela.mensagemTudoCerto(), validarExameExcluido);
-        Assertions.assertEquals(exameTela.mensagemExcluido(), validarExameExcluido2);
+        Assertions.assertEquals(exameTela.mensagemTudoCerto(), exameTela.validarExameExcluido());
+        Assertions.assertEquals(exameTela.mensagemExcluido(), exameTela.validarExameExcluido2());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um exame sem selecionar uma categoria e sem anexar um Exame.")
     public void testRealizarOCadastroDeUmExameSemSelecionarUmaCategoriaESemAnexarUmExame(){
+        test = extent.createTest("Realizar o cadastro de um exame sem selecionar uma categoria e sem anexar um Exame.");
         ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -145,14 +162,18 @@ public class ExameTest {
                 .botaoAdicionarNovo()
                 .botaoSalvar();
 
-        String btnDesabilitado = exameTela.validarExamebtnSalvarDisable();
+        if(exameTela.mensagemNovo().equals(exameTela.validarExamebtnSalvarDisable())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals(exameTela.mensagemNovo(), btnDesabilitado);
+        Assertions.assertEquals(exameTela.mensagemNovo(), exameTela.validarExamebtnSalvarDisable());
     }
 
     @Test
-    @DisplayName("Realizar clique no botão Anexar exame e na opção Cancelar.")
     public void testRealizarCliqueNoBotaoAnexarExameENaOpcaoCancelar(){
+        test = extent.createTest("Realizar clique no botão Anexar exame e na opção Cancelar.");
         ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -169,13 +190,17 @@ public class ExameTest {
                 .botaoAnexarExame()
                 .clicarBtnCancelarAnexar();
 
-        String btnDesabilitado = exameTela.validarExamebtnSalvarDisable();
+        if(exameTela.mensagemNovo().equals(exameTela.validarExamebtnSalvarDisable())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals(exameTela.mensagemNovo(), btnDesabilitado);
+        Assertions.assertEquals(exameTela.mensagemNovo(), exameTela.validarExamebtnSalvarDisable());
     }
     @Test
-    @DisplayName("Realizar clique no campo Selecione a categoria e na opção Cancelar.")
     public void testRealizarCliqueNoCampoSelecioneACategoriaENaOpcaoCancelar(){
+        test = extent.createTest("Realizar clique no campo Selecione a categoria e na opção Cancelar.");
         ExameTela exameTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -192,13 +217,18 @@ public class ExameTest {
                 .btnCategoria()
                 .clicarBtnCancelarCategoria();
 
-        String btnDesabilitado = exameTela.validarExamebtnSalvarDisable();
+        if(exameTela.mensagemNovo().equals(exameTela.validarExamebtnSalvarDisable())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals(exameTela.mensagemNovo(), btnDesabilitado);
+        Assertions.assertEquals(exameTela.mensagemNovo(), exameTela.validarExamebtnSalvarDisable());
     }
 
     @After
     public void fecharDriver(){
         app.quit();
+        extent.flush();
     }
 }

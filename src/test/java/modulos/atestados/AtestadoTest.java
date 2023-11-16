@@ -1,7 +1,10 @@
 package modulos.atestados;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.android.AndroidDriver;
-import modulos.driver.AndroidDriverProvider;
+import driver.AndroidDriverProvider;
+import driver.TestBase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,12 +12,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import telas.AtestadoTela;
 import telas.BemVindoTela;
-import telas.LoginTela;
 
 import java.util.concurrent.TimeUnit;
 
 public class AtestadoTest {
     private AndroidDriver app;
+    private ExtentReports extent = TestBase.getInstance();
+    private ExtentTest test;
 
     @Before
     @DisplayName("Metodo de abertura do driver")
@@ -24,8 +28,8 @@ public class AtestadoTest {
     }
 
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período.")
     public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodo() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e Período.");
         AtestadoTela atestadoTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -58,13 +62,19 @@ public class AtestadoTest {
                 .checkBoxConfirmacao()
                 .btnSalvar();
 
+        if(atestadoTela.mensagemTudoCerto().equals(atestadoTela.mensagemCadastroPositivo()) && atestadoTela.mensagemTudoCerto2().equals(atestadoTela.mensagemCadastroPositivoComplemento())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemTudoCerto(),atestadoTela.mensagemCadastroPositivo());
         Assertions.assertEquals(atestadoTela.mensagemTudoCerto2(),atestadoTela.mensagemCadastroPositivoComplemento());
     }
 
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Quantidade.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorHoraEQuantidade() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e Quantidade.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -94,13 +104,19 @@ public class AtestadoTest {
                 .checkBoxConfirmacao2()
                 .btnSalvar2();
 
+        if(atestadoTela.mensagemTudoCerto().equals(atestadoTela.mensagemCadastroPositivo()) && atestadoTela.mensagemTudoCerto2().equals(atestadoTela.mensagemCadastroPositivoComplemento())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemTudoCerto(),atestadoTela.mensagemCadastroPositivo());
         Assertions.assertEquals(atestadoTela.mensagemTudoCerto2(),atestadoTela.mensagemCadastroPositivoComplemento());
     }
 
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorDia() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por dia.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -130,13 +146,19 @@ public class AtestadoTest {
                 .checkBoxConfirmacao3()
                 .btnSalvar3();
 
+        if(atestadoTela.mensagemTudoCerto().equals(atestadoTela.mensagemCadastroPositivo()) && atestadoTela.mensagemTudoCerto2().equals(atestadoTela.mensagemCadastroPositivoComplemento())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemTudoCerto(),atestadoTela.mensagemCadastroPositivo());
         Assertions.assertEquals(atestadoTela.mensagemTudoCerto2(),atestadoTela.mensagemCadastroPositivoComplemento());
     }
 
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem data inicio.")
     public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodoSemDataInicio() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e Período sem data inicio.");
         AtestadoTela atestadoTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -154,12 +176,18 @@ public class AtestadoTest {
                 .btnCadastrarAtestado()
                 .btnSalvar();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemDataInicio().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemDataInicio(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Quantidade sem data inicio.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorHoraEQuantidadeSemDataInicio() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e Quantidade sem data inicio.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -178,12 +206,18 @@ public class AtestadoTest {
                 .tipoHoraQtd()
                 .btnSalvar2();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemDataInicio().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemDataInicio(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem data inicio.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorDiaSemDataInicio() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por dia sem data inicio.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -202,12 +236,18 @@ public class AtestadoTest {
                 .tipoAtestadoDia()
                 .btnSalvar3();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemDataInicio().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemDataInicio(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem hora inicio.")
     public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodoSemHoraInicio() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e Período sem hora inicio.");
         AtestadoTela atestadoTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -227,13 +267,19 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemHoraInicio().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemHoraInicio(),atestadoTela.alerta());
     }
 
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Quantidade sem hora inicio.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorHoraEQuantidadeSemHoraInicio() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e Quantidade sem hora inicio.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -254,12 +300,18 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar2();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemHoraInicio().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemHoraInicio(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem hora inicio.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorDiaSemHoraInicio() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por dia sem hora inicio.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -280,13 +332,19 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar3();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemHoraInicio().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemHoraInicio(),atestadoTela.alerta());
     }
 
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem data fim.")
     public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodoSemDataFim() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e Período sem data fim.");
         AtestadoTela atestadoTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -308,12 +366,18 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemDataFim().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemDataFim(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem  a qtd de horas.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorHoraEQuantidadeSemAQtdDeHoras() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem  a qtd de horas.");
         //Ao deixar o valor da quantidade de dias de horas em branco, o campo não fica como obrigatório.
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
@@ -337,12 +401,18 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar2();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemQtdHoras().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemQtdHoras(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem hora fim.")
     public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodoSemHoraFim() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e Período sem hora fim.");
         AtestadoTela atestadoTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -367,12 +437,18 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemHoratermino().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemHoratermino(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem a quantidade de dias.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorDiaSemAQuantidadeDeDias() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por dia sem a quantidade de dias.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -395,12 +471,18 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar3();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemNumeroDias().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemNumeroDias(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem o nome do medico.")
     public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodoSemONomeDoMedico() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e Período sem o nome do medico.");
         AtestadoTela atestadoTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -427,12 +509,18 @@ public class AtestadoTest {
                 .btnConfirmarDataEHora()
                 .btnSalvar();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemMedicoResponsavel().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemMedicoResponsavel(),atestadoTela.alerta());
      }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem o nome do medico.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorHoraEQuantidadeSemONomeDoMedico() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem o nome do medico.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -456,12 +544,18 @@ public class AtestadoTest {
                 .btnqtdHoras()
                 .btnSalvar2();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemMedicoResponsavel().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemMedicoResponsavel(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem o nome do medico.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorDiaSemONomeDoMedico() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por dia sem o nome do medico.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -485,12 +579,18 @@ public class AtestadoTest {
                 .btnDias()
                 .btnSalvar3();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemMedicoResponsavel().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemMedicoResponsavel(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem o CRM/CRO do medico.")
     public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodoSemOCrmCroDoMedico() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e Período sem o CRM/CRO do medico.");
         AtestadoTela atestadoTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -518,12 +618,18 @@ public class AtestadoTest {
                 .txtNomeMedico("Dr João Silva")
                 .btnSalvar();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemCrmMedico().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemCrmMedico(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem o CRM/CRO do medico.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorHoraEQuantidadeSemOCrmCroDoMedico() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem o CRM/CRO do medico.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -548,12 +654,18 @@ public class AtestadoTest {
                 .txtNomeMedico2("Dr João Silva")
                 .btnSalvar2();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemCrmMedico().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemCrmMedico(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem o CRM/CRO do medico.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorDiaSemOCrmCroDoMedico() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por dia sem o CRM/CRO do medico.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -578,12 +690,18 @@ public class AtestadoTest {
                 .txtNomeMedico3("Dr João Silva")
                 .btnSalvar3();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemCrmMedico().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemCrmMedico(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem anexo do atestado.")
     public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodoSemAnexoDoAtestado() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e Período sem anexo do atestado.");
         AtestadoTela atestadoTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -614,12 +732,18 @@ public class AtestadoTest {
                 .txtObs("Obs")
                 .btnSalvar();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemAnexoAtestado().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemAnexoAtestado(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem anexo do atestado.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorHoraEQuantidadeSemAnexoDoAtestado() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem anexo do atestado.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -647,12 +771,18 @@ public class AtestadoTest {
                 .txtObs2("Obs")
                 .btnSalvar2();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemAnexoAtestado().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemAnexoAtestado(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem anexo do atestado.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorDiaSemAnexoDoAtestado() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por dia sem anexo do atestado.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -680,12 +810,18 @@ public class AtestadoTest {
                 .txtObs3("Obs")
                 .btnSalvar3();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemAnexoAtestado().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemAnexoAtestado(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e Período sem marcar o campo de confirmação de dados.")
     public void testRealizarCadastroDeUmAtestadoDoTipoPorHoraEPeriodoSemMarcarOCampoDeConfirmacaoDeDados() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e Período sem marcar o campo de confirmação de dados.");
         AtestadoTela atestadoTela  = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -717,12 +853,18 @@ public class AtestadoTest {
                 .btnAnexarAtestadoGaleria()
                 .btnSalvar();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemValidadeDados().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemValidadeDados(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem marcar o campo de confirmação de dados.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorHoraEQuantidadeSemMarcarOCampoDeConfirmacaoDedados() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por hora e quantidade sem marcar o campo de confirmação de dados.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -751,12 +893,18 @@ public class AtestadoTest {
                 .btnAnexarAtestadoGaleria2()
                 .btnSalvar2();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemValidadeDados().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemValidadeDados(),atestadoTela.alerta());
     }
     @Test
-    @DisplayName("Realizar o cadastro de um atestado do tipo: Por dia sem marcar o campo de confirmação de dados.")
     public void testRealizarOCadastroDeUmAtestadoDoTipoPorDiaSemMarcarOCampoDeConfirmacaoDeDados() {
+        test = extent.createTest("Realizar o cadastro de um atestado do tipo: Por dia sem marcar o campo de confirmação de dados.");
         AtestadoTela atestadoTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -785,11 +933,18 @@ public class AtestadoTest {
                 .btnAnexarAtestadoGaleria3()
                 .btnSalvar3();
 
+        if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemValidadeDados().equals(atestadoTela.alerta())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
+
         Assertions.assertEquals(atestadoTela.mensagemAtencao(),atestadoTela.alertaAtencao());
         Assertions.assertEquals(atestadoTela.mensagemValidadeDados(),atestadoTela.alerta());
     }
     @After
     public void fecharDriver(){
         app.quit();
+        extent.flush();
     }
 }

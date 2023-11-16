@@ -3,8 +3,8 @@ package modulos.agendamento;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.android.AndroidDriver;
-import modulos.driver.AndroidDriverProvider;
-import modulos.driver.TestBase;
+import driver.AndroidDriverProvider;
+import driver.TestBase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -246,5 +246,6 @@ public class AgendamentoTest {
     @After
     public void fecharDriver(){
         app.quit();
+        extent.flush();
     }
 }

@@ -1,7 +1,10 @@
 package modulos.receitas;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.android.AndroidDriver;
-import modulos.driver.AndroidDriverProvider;
+import driver.AndroidDriverProvider;
+import driver.TestBase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +17,8 @@ import java.util.concurrent.TimeUnit;
 
 public class ReceitasTest {
     private AndroidDriver app;
+    private ExtentReports extent = TestBase.getInstance();
+    private ExtentTest test;
 
     @Before
     @DisplayName("Metodo de abertura do driver")
@@ -23,8 +28,8 @@ public class ReceitasTest {
     }
 
     @Test
-    @DisplayName("Realizar o cadastro de uma receita com nome do medico, CRM do medico e anexar o exame do tipo câmera e salvar.")
     public void testRealizarOCadastroDeUmaReceitaComNomeDoMedicoCrmDoMedicoEAnexarOExameDoTipoCameraESalvar() {
+        test = extent.createTest("Realizar o cadastro de uma receita com nome do medico, CRM do medico e anexar o exame do tipo câmera e salvar.");
         ReceitaTela receitaTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -46,15 +51,18 @@ public class ReceitasTest {
                 .botaoAnexarReceita()
                 .botaoSalvar();
 
-        String validarReceitaCadastrado = receitaTela.mensagemDeSucesso();
-        String validarReceitaCadastrado2 = receitaTela.mensagemDeSucesso2();
+        if(receitaTela.mensagemTudoCerto().equals(receitaTela.mensagemDeSucesso()) && receitaTela.mensagemSucesso().equals(receitaTela.mensagemDeSucesso2())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals(receitaTela.mensagemTudoCerto(), validarReceitaCadastrado);
-        Assertions.assertEquals(receitaTela.mensagemSucesso(), validarReceitaCadastrado2);
+        Assertions.assertEquals(receitaTela.mensagemTudoCerto(), receitaTela.mensagemDeSucesso());
+        Assertions.assertEquals(receitaTela.mensagemSucesso(), receitaTela.mensagemDeSucesso2());
     }
     @Test
-    @DisplayName("Realizar o cadastro de uma receita com nome do medico, CRM do medico e anexar o exame do tipo galeria de imagens e salvar.")
     public void testRealizarOCadastroDeUmaReceitaComNomeDoMedicoCrmDoMedicoEAnexarOExameDoTipoGaleriaDeImagensESalvar() {
+        test = extent.createTest("Realizar o cadastro de uma receita com nome do medico, CRM do medico e anexar o exame do tipo galeria de imagens e salvar.");
         ReceitaTela receitaTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -76,15 +84,18 @@ public class ReceitasTest {
                 .btnGaleria()
                 .botaoSalvar();
 
-        String validarReceitaCadastrado = receitaTela.mensagemDeSucesso();
-        String validarReceitaCadastrado2 = receitaTela.mensagemDeSucesso2();
+        if(receitaTela.mensagemTudoCerto().equals(receitaTela.mensagemDeSucesso()) && receitaTela.mensagemSucesso().equals(receitaTela.mensagemDeSucesso2())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals(receitaTela.mensagemTudoCerto(), validarReceitaCadastrado);
-        Assertions.assertEquals(receitaTela.mensagemSucesso(), validarReceitaCadastrado2);
+        Assertions.assertEquals(receitaTela.mensagemTudoCerto(), receitaTela.mensagemDeSucesso());
+        Assertions.assertEquals(receitaTela.mensagemSucesso(), receitaTela.mensagemDeSucesso2());
     }
     @Test
-    @DisplayName("Realizar o cadastro de uma receita com nome do medico, CRM do medico e anexar o exame do tipo Documentos e salvar.")
     public void testRealizarOCadastroDeUmaReceitaComNomeDoMedicoCrmDoMedicoEAnexarOExameDoTipoDocumentosESalvar() {
+        test = extent.createTest("Realizar o cadastro de uma receita com nome do medico, CRM do medico e anexar o exame do tipo Documentos e salvar.");
         ReceitaTela receitaTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -106,15 +117,18 @@ public class ReceitasTest {
                 .btnDocumento()
                 .botaoSalvar();
 
-        String validarReceitaCadastrado = receitaTela.mensagemDeSucesso();
-        String validarReceitaCadastrado2 = receitaTela.mensagemDeSucesso2();
+        if(receitaTela.mensagemTudoCerto().equals(receitaTela.mensagemDeSucesso()) && receitaTela.mensagemSucesso().equals(receitaTela.mensagemDeSucesso2())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals(receitaTela.mensagemTudoCerto(), validarReceitaCadastrado);
-        Assertions.assertEquals(receitaTela.mensagemSucesso(), validarReceitaCadastrado2);
+        Assertions.assertEquals(receitaTela.mensagemTudoCerto(), receitaTela.mensagemDeSucesso());
+        Assertions.assertEquals(receitaTela.mensagemSucesso(), receitaTela.mensagemDeSucesso2());
     }
     @Test
-    @DisplayName("Realizar o cadastro de uma receita sem preencher o nome do medico, CRM do médico e sem anexo de receita e clicar em salvar.")
     public void testRealizarOCadastroDeUmaReceitaSemPreencherONomeDoMedicoCrmDoMedicoESemAnexoDeReceitaEClicarEmSalvar() {
+        test = extent.createTest("Realizar o cadastro de uma receita sem preencher o nome do medico, CRM do médico e sem anexo de receita e clicar em salvar.");
         ReceitaTela receitaTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -133,13 +147,17 @@ public class ReceitasTest {
                 .campoCRM("")
                 .botaoSalvar();
 
-        String validarReceitaCadastrado = receitaTela.validarCamposObrigatório();
+        if(receitaTela.mensagemBtnDesabilitado().equals(receitaTela.validarCamposObrigatório())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals(receitaTela.mensagemBtnDesabilitado(), validarReceitaCadastrado);
+        Assertions.assertEquals(receitaTela.mensagemBtnDesabilitado(), receitaTela.validarCamposObrigatório());
     }
     @Test
-    @DisplayName("Realizar o clique no botão Anexar Receita e na opção Cancelar.")
     public void testRealizarOCliqueNoBotaoAnexarReceitaENaOpcaoCancelar() {
+        test = extent.createTest("Realizar o clique no botão Anexar Receita e na opção Cancelar.");
         ReceitaTela receitaTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
@@ -157,12 +175,17 @@ public class ReceitasTest {
                 .btnAnexar()
                 .btnCancelar();
 
-        String validarReceitaCadastrado = receitaTela.validarCamposObrigatório();
+        if(receitaTela.mensagemBtnDesabilitado().equals(receitaTela.validarCamposObrigatório())){
+            test.pass("Teste Aprovado");
+        }else{
+            test.fail("Teste Reprovado");
+        }
 
-        Assertions.assertEquals(receitaTela.mensagemBtnDesabilitado(), validarReceitaCadastrado);
+        Assertions.assertEquals(receitaTela.mensagemBtnDesabilitado(), receitaTela.validarCamposObrigatório());
     }
     @After
     public void fecharDriver(){
         app.quit();
+        extent.flush();
     }
 }
