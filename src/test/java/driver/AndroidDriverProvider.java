@@ -19,7 +19,7 @@ public class AndroidDriverProvider {
     }
     private static void createDriver() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("app","D:\\Prestação de serviço\\Atividades\\homolog-container\\1.1.35\\app-homol-login-new.apk");
+        capabilities.setCapability("app","C:\\RepositórioNHG\\apps\\homolog-container\\1.1.36\\app-indique-sdk.apk");
         capabilities.setCapability("deviceName","ZF5245R8X4");
         capabilities.setCapability("platformName", "Android");
 

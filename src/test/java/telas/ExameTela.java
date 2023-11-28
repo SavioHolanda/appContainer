@@ -53,8 +53,7 @@ public class ExameTela {
 
     public ExameTela botaoGaleria(){
         app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]")).click();
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.ImageView")).click();
-        app.findElement(By.id("com.google.android.apps.photosgo:id/single_photo")).click();
+        app.findElement(By.id("com.google.android.providers.media.module:id/icon_thumbnail")).click();
         return this;
     }
     public ExameTela botaoDocumento(){

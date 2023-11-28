@@ -58,7 +58,7 @@ public class AtestadoTela {
     }
     public AtestadoTela btnPermissao(){
         app.findElement(By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button")).click();
-        app.findElement(By.id("com.android.permissioncontroller:id/permission_allow_button")).click();
+        //app.findElement(By.id("com.android.permissioncontroller:id/permission_allow_button")).click();
         return this;
     }
     public AtestadoTela btnCadastrarAtestado(){
@@ -138,17 +138,15 @@ public class AtestadoTela {
         return this;
     }
     public AtestadoTela btnAnexarAtestadoGaleria(){
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[15]")).click();
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]")).click();
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.FrameLayout[2]/android.view.ViewGroup")).click();
-        app.findElement(By.id("com.google.android.apps.photosgo:id/single_photo")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"Anexar Atestado\"]")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"Galeria de imagens\"]")).click();
+        app.findElement(By.id("com.google.android.providers.media.module:id/icon_thumbnail")).click();
         return this;
     }
-    public AtestadoTela btnAnexarAtestadoGaleria2(){
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[12]")).click();
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]")).click();
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.FrameLayout[2]/android.view.ViewGroup")).click();
-        app.findElement(By.id("com.google.android.apps.photosgo:id/single_photo")).click();
+/*    public AtestadoTela btnAnexarAtestadoGaleria2(){
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"Anexar Atestado\"]")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"Galeria de imagens\"]")).click();
+        app.findElement(By.id("com.google.android.providers.media.module:id/icon_thumbnail")).click();
         return this;
     }
     public AtestadoTela btnAnexarAtestadoGaleria3(){
@@ -157,7 +155,7 @@ public class AtestadoTela {
         app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.FrameLayout[2]/android.view.ViewGroup")).click();
         app.findElement(By.id("com.google.android.apps.photosgo:id/single_photo")).click();
         return this;
-    }
+    }*/
     public AtestadoTela checkBoxConfirmacao(){
         app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[16]")).click();
         return this;
@@ -208,7 +206,7 @@ public class AtestadoTela {
         return "Tudo certo!";
     }
     public String mensagemTudoCerto2(){
-        return "Recebemos o seu atestado e está em análise. Em até 2 dias úteis você receberá a confirmação de aceite, fique atento. \n" +
+        return "Recebemos o seu atestado e está em análise. Em até 2 dias úteis você receberá a confirmação de aceite, fique atento.\n" +
                                 " IMPORTANTE: Não descarte seu atestado original, ele é um documento legal, e pode ser necessário apresentá-lo pessoalmente.";
     }
     public String mensagemDataInicio(){

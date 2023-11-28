@@ -61,7 +61,6 @@ public class LoginTest {
                 .btnAvancar()
                 .selecionarEmpresabem()
                 .btnEmpresaAvancar()
-                .escreverCPF("02971008312")
                 .escreverSenha("Fale1234@")
                 .botaoEntrar()
                 .botaoHome();

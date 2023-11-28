@@ -100,7 +100,7 @@ public class AtestadoTest {
                 .txtCRM2("123456")
                 .txtCID2("654321")
                 .txtObs2("Obs")
-                .btnAnexarAtestadoGaleria2()
+                .btnAnexarAtestadoGaleria()
                 .checkBoxConfirmacao2()
                 .btnSalvar2();
 
@@ -142,7 +142,7 @@ public class AtestadoTest {
                 .txtCRM3("123456")
                 .txtCID3("654321")
                 .txtObs3("Obs")
-                .btnAnexarAtestadoGaleria3()
+                .btnAnexarAtestadoGaleria()
                 .checkBoxConfirmacao3()
                 .btnSalvar3();
 
@@ -890,7 +890,7 @@ public class AtestadoTest {
                 .txtCRM2("123456")
                 .txtCID2("654321")
                 .txtObs2("Obs")
-                .btnAnexarAtestadoGaleria2()
+                .btnAnexarAtestadoGaleria()
                 .btnSalvar2();
 
         if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemValidadeDados().equals(atestadoTela.alerta())){
@@ -930,7 +930,7 @@ public class AtestadoTest {
                 .txtCRM3("123456")
                 .txtCID3("654321")
                 .txtObs3("Obs")
-                .btnAnexarAtestadoGaleria3()
+                .btnAnexarAtestadoGaleria()
                 .btnSalvar3();
 
         if(atestadoTela.mensagemAtencao().equals(atestadoTela.alertaAtencao()) && atestadoTela.mensagemValidadeDados().equals(atestadoTela.alerta())){

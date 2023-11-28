@@ -46,11 +46,11 @@ public class AgendamentoTela {
         return this;
     }
     public AgendamentoTela selecionarDataDisponivel() {
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[41]/android.view.ViewGroup/android.widget.TextView")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"29\"]")).click();
         return this;
     }
     public AgendamentoTela botaoOKAgenda(){
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[43]")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"OK\"]")).click();
         return this;
     }
     public AgendamentoTela selecionarHora(){
@@ -81,7 +81,7 @@ public class AgendamentoTela {
         return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView")).getText();
     }
     public AgendamentoTela btnAgendaVoltar(){
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[42]")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"VOLTAR\"]")).click();
         return this;
     }
     public String txtTipoAgendamento(){

@@ -42,7 +42,7 @@ public class ExameTest {
                 .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
-                .botaoAcessoFotoEVideos()
+                //.botaoAcessoFotoEVideos()
                 .botaoAdicionarNovo()
                 .campoSelecioneCategoria("Raio-X")
                 .botaoAnexarExame()
@@ -72,7 +72,7 @@ public class ExameTest {
                 .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
-                .botaoAcessoFotoEVideos()
+                //.botaoAcessoFotoEVideos()
                 .botaoAdicionarNovo()
                 .campoSelecioneCategoria("Raio-X")
                 .botaoAnexarExame()
@@ -102,7 +102,7 @@ public class ExameTest {
                 .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
-                .botaoAcessoFotoEVideos()
+                //.botaoAcessoFotoEVideos()
                 .botaoAdicionarNovo()
                 .campoSelecioneCategoria("Raio-X")
                 .botaoAnexarExame()
@@ -132,7 +132,7 @@ public class ExameTest {
                 .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
-                .botaoAcessoFotoEVideos()
+                //.botaoAcessoFotoEVideos()
                 .excluirExame();
 
         if(exameTela.mensagemTudoCerto().equals(exameTela.validarExameExcluido()) && exameTela.mensagemExcluido().equals(exameTela.validarExameExcluido2())){
@@ -158,7 +158,7 @@ public class ExameTest {
                 .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
-                .botaoAcessoFotoEVideos()
+                //.botaoAcessoFotoEVideos()
                 .botaoAdicionarNovo()
                 .botaoSalvar();
 
@@ -185,7 +185,7 @@ public class ExameTest {
                 .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
-                .botaoAcessoFotoEVideos()
+                //.botaoAcessoFotoEVideos()
                 .botaoAdicionarNovo()
                 .botaoAnexarExame()
                 .clicarBtnCancelarAnexar();
@@ -212,7 +212,7 @@ public class ExameTest {
                 .botaoHome()
                 .botaoExame()
                 .botaoPermitirFotoEVideos()
-                .botaoAcessoFotoEVideos()
+                //.botaoAcessoFotoEVideos()
                 .botaoAdicionarNovo()
                 .btnCategoria()
                 .clicarBtnCancelarCategoria();

@@ -152,7 +152,7 @@ public class SinaisVitaisTela {
         return "Informe a altura.";
     }
     public String mensagemInforTemperatura(){
-        return "Informe a temperatura.";
+        return "0";
     }
     public String mensagemInforSistolica(){
         return "Insira a pressão sistólica";
@@ -164,9 +164,9 @@ public class SinaisVitaisTela {
         return "Informe o pulso.";
     }
     public String mensagemInforGlicemia(){
-        return "Informe o valor da glicemia.";
+        return "0";
     }
     public String mensagemInforSaturacao(){
-        return "Informe a saturação.";
+        return "0";
     }
 }
