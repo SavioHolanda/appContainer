@@ -30,7 +30,7 @@ Certifique-se de ter os seguintes pré-requisitos instalados:
 1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-seu-repositorio.git
+git clone https://github.com/SavioHolanda/appContainer.git
 ```
 2. **Navegue até o diretório do projeto:**
 
