@@ -100,7 +100,6 @@ public class MeusDadosTest {
         }else{
             test.fail("Teste Reprovado");
         }
-        // não está achando o campo
         Assertions.assertEquals(perfilTela.mensagemTelefone(), perfilTela.msnTelefone());
     }
 
@@ -124,7 +123,7 @@ public class MeusDadosTest {
         }else{
             test.fail("Teste Reprovado");
         }
-        // não está achando o campo
+
         Assertions.assertEquals(perfilTela.msnCEP(), perfilTela.mensagemCEP());
     }
 }
