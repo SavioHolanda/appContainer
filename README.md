@@ -19,7 +19,7 @@ Este repositório contém testes automatizados para aplicativos móveis utilizan
 
 Certifique-se de ter os seguintes pré-requisitos instalados:
 
-- [Appium](http://appium.io/docs/en/about-appium/intro/)
+- [Appium]([http://appium.io/docs/en/about-appium/intro/](https://appium.io/docs/en/2.1/quickstart/install/))
 - [Node.js](https://nodejs.org/)
 - [Servidor Appium](http://appium.io/docs/en/about-appium/intro/) (inicie o servidor antes de executar os testes)
 - [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-downloads.html)
