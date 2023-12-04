@@ -1,3 +1,4 @@
+
 # Repositório de Automação de Testes com Appium
 
 ## Visão Geral
@@ -30,8 +31,37 @@ Certifique-se de ter os seguintes pré-requisitos instalados:
 
 ```bash
 git clone https://github.com/seu-usuario/nome-do-seu-repositorio.git
-
+```
 2. **Navegue até o diretório do projeto:**
 
 ```bash
 cd nome-do-seu-repositorio
+```
+3. **Instale as dependências:**
+```bash
+npm install
+```
+
+## Estrutura do Projeto
+***/tests:*** Contém scripts de teste escritos utilizando o Appium e seu framework de teste preferido (por exemplo, Jasmine, Mocha). \
+***/config:*** Arquivos de configuração para o Appium e outras configurações do projeto. \
+***/utils:*** Funções utilitárias e módulos auxiliares. \
+***/screenshots:*** Capturas de tela feitas durante as execuções dos testes.
+
+## Configuração
+Configure as configurações do Appium e as capacidades do dispositivo no diretório /config. Atualize o arquivo appium-config.js com as configurações desejadas.
+
+## Executando Testes
+Execute o seguinte comando para executar os testes:
+```bash
+npm test
+```
+Para executar testes específicos, use o comando do executor de teste seguido do nome do arquivo de teste ou de um caso de teste específico:
+```bash
+npm test /tests/login-tests.js
+```
+## Contribuições
+Se deseja contribuir para este projeto, siga as diretrizes de contribuição.
+
+## Licença
+Este projeto está licenciado sob a Licença [MIT](https://choosealicense.com/licenses/mit/).
