@@ -102,10 +102,15 @@ public class PerfilTela {
         return app.findElement(By.xpath("(//android.widget.TextView[@text=\"Campo obrigatório\"])[2]")).getText();
     }
     public PerfilTela clear(){
-        //mudar o xpath dos dois
-        app.findElement(By.xpath("//android.widget.EditText[@text=\"Nova Senha\"]")).clear();
-        app.findElement(By.xpath("//android.widget.EditText[@text=\"Confirmar senha\"]")).clear();
+        app.findElement(By.xpath("(//android.widget.EditText[@text=\"•\"])[1]")).clear();
+        app.findElement(By.xpath("(//android.widget.EditText[@text=\"•\"])[1]")).clear();
         return this;
+    }
+    public String mensagemAtencaoPadraoSenha(){
+        return app.findElement(By.xpath("//android.widget.TextView[@text=\"Atenção! Sua senha deve conter no mínimo 8 caracteres. Para sua segurança, é obrigatório incluir ao menos um número, uma letra maiúscula, uma minúscula e um caractere especial (#, *, @ etc.).\"]")).getText();
+    }
+    public String mensagemCamposNaoCorrespondem(){
+        return app.findElement(By.xpath("//android.widget.TextView[@text=\"As senhas informadas não correspondem.\"]")).getText();
     }
 
     /*** Mensagens de retorno ***/
@@ -132,5 +137,11 @@ public class PerfilTela {
     }
     public String mensagemCamposSenha(){
         return "Campo obrigatório";
+    }
+    public String mensagemAtencaoAOPadraoSenha(){
+        return "Atenção! Sua senha deve conter no mínimo 8 caracteres. Para sua segurança, é obrigatório incluir ao menos um número, uma letra maiúscula, uma minúscula e um caractere especial (#, *, @ etc.).";
+    }
+    public String mensagemSenhaNaoCorrespondem(){
+        return "As senhas informadas não correspondem.";
     }
 }

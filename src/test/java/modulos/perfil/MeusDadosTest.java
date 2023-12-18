@@ -2,8 +2,8 @@ package modulos.perfil;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import driver.AndroidDriverProvider;
-import driver.TestBase;
+import config.AndroidDriverProvider;
+import config.TestBase;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.Before;
 import org.junit.Test;
