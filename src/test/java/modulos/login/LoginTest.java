@@ -30,7 +30,7 @@ public class LoginTest {
 
     @Test
     public void testRealizarLoginComSucessoComUmUsuarioCadastradoEmApenasUmaEntidade() {
-        test = extent.createTest("Realizar login com sucesso com um usuário cadastrado em apenas uma entidade.");
+        test = extent.createTest("Realizar login com sucesso com um usuário cadastrado em apenas uma entidade. A");
         HomeTela homeTela = new BemVindoTela(app)
                 .botaoAvancar()
                 .botaoAvancar()
