@@ -136,7 +136,12 @@ public class BemVindoTest {
                 .txtCpf("75598710030")
                 .btnAvancar()
                 .FormPrimeiroAcessoTela()
-                .btnAceiteDoc();
+                .btnAceiteDoc()
+                .txtNome()
+                .scroll(0.95,0.95,0.95,0.15)
+                .tipoSanguineo()
+                .campoNumero("555")
+                .btnEnviar();
 
         if(formPrimeiroAcessoTela.txtalertaSucessoAceite().equals(formPrimeiroAcessoTela.alertaSucessoAceite()) && formPrimeiroAcessoTela.txtmsnSucessoAceite().equals(formPrimeiroAcessoTela.msnSucessoAceite())){
             test.pass("Teste Aprovado");

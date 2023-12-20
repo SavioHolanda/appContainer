@@ -31,34 +31,34 @@ public class BemVindoTela {
     }
 
     public BemVindoTela btnAvancar() {
-        app.findElement(By.xpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]")).click();
-        app.findElement(By.xpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"Avançar\"]")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"Avançar\"]")).click();
         return this;
     }
 
     public LoginTela btnAvancarSimples() {
-        app.findElement(By.xpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]")).click();
-        app.findElement(By.xpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"Avançar\"]")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"Avançar\"]")).click();
         return new LoginTela(app);
     }
 
     public BemVindoTela selecionarEmpresabem() {
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup[1]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.widget.TextView")).click();
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup[1]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.widget.TextView")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"DIMENSA S.A. 149\"]")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"DIMENSA S.A. 149\"]")).click();
         return this;
     }
 
     public LoginTela btnEmpresaAvancar() {
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup[1]/android.view.ViewGroup")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"Avançar\"]")).click();
         return new LoginTela(app);
     }
 
     public String mensagemErro() {
-        return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.TextView[1]")).getText();
+        return app.findElement(By.xpath("//android.widget.TextView[@text=\"Error\"]")).getText();
     }
 
     public String mensagemDadosNaoEncontrados() {
-        return app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.TextView[2]")).getText();
+        return app.findElement(By.xpath("//android.widget.TextView[@text=\"Dados não encontrados\"]")).getText();
     }
 
     public String mensagemCpfCampo() {
@@ -66,7 +66,7 @@ public class BemVindoTela {
     }
 
     public FormPrimeiroAcessoTela FormPrimeiroAcessoTela() {
-        app.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup")).click();
+        app.findElement(By.xpath("//android.widget.TextView[@text=\"Politica de Privacidade 1.11\"]")).click();
         return new FormPrimeiroAcessoTela(app);
     }
 

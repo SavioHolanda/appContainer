@@ -22,6 +22,8 @@ public class AndroidDriverProvider {
         capabilities.setCapability("app","C:\\RepositórioNHG\\apps\\homolog-container\\1.1.36\\app-indique-sdk.apk");
         capabilities.setCapability("deviceName","ZF5245R8X4");
         capabilities.setCapability("platformName", "Android");
+        //capabilities.setCapability("unicodeKeyboard", true);
+        capabilities.setCapability("resetKeybord", true);
 
         try {
             URL appiumServerUrl = new URL("http://localhost:4723/wd/hub");
